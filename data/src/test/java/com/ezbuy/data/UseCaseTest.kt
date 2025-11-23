@@ -12,13 +12,12 @@ import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import org.junit.Assert.*
 import java.io.IOException
 
 class UseCaseTest {
-
     private val mockListRepository = mockk<ListRepository>()
     private val mockListMapper = mockk<ListDomainModelMapper>()
 
@@ -37,25 +36,26 @@ class UseCaseTest {
     }
 
     @Test
-    fun `invoke returns Resource Success`() = runBlocking {
-        coEvery { mockListRepository.getListFirst() } returns Resource.Success(mockListResponseModel)
-        coEvery { mockListMapper.mapToDomainModel(mockListResponseModel) } returns mockListModel
+    fun `invoke returns Resource Success`() =
+        runBlocking {
+            coEvery { mockListRepository.getListFirst() } returns Resource.Success(mockListResponseModel)
+            coEvery { mockListMapper.mapToDomainModel(mockListResponseModel) } returns mockListModel
 
-        val result = getListUseCase.invoke(listRequestModel)
+            val result = getListUseCase.invoke(listRequestModel)
 
-        assertTrue(result is Resource.Success)
-        assertEquals(mockListModel, (result as Resource.Success).data)
-    }
+            assertTrue(result is Resource.Success)
+            assertEquals(mockListModel, (result as Resource.Success).data)
+        }
 
     @Test
-    fun `invoke returns Resource Failure`() = runBlocking {
-        val ioException = IOException("An error occurred")
-        coEvery { mockListRepository.getListFirst() } returns Resource.Failure(ioException)
+    fun `invoke returns Resource Failure`() =
+        runBlocking {
+            val ioException = IOException("An error occurred")
+            coEvery { mockListRepository.getListFirst() } returns Resource.Failure(ioException)
 
-        val result = getListUseCase.invoke(listRequestModel)
+            val result = getListUseCase.invoke(listRequestModel)
 
-        assertTrue(result is Resource.Failure)
-        assertEquals(ioException, (result as Resource.Failure).error)
-    }
-
+            assertTrue(result is Resource.Failure)
+            assertEquals(ioException, (result as Resource.Failure).error)
+        }
 }

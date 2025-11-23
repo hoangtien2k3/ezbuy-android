@@ -46,7 +46,7 @@
         android:label="ListLazyColumn" />
     <dialog
         android:id="@+id/detailBottomSheetFragment"
-        android:name="com.productapp.presentation.detail.bottomsheet.DetailBottomSheetFragment"
+        android:name="com.EzbuyApp.presentation.detail.bottomsheet.DetailBottomSheetFragment"
         android:label="" >
         <action
             android:id="@+id/action_detailBottomSheetFragment_to_homeFragment"

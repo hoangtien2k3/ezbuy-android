@@ -8,23 +8,23 @@ import com.ezbuy.home.databinding.HomeSlidingProductItemBinding
 import com.ezbuy.presentation.common.extension.setImageUrl
 
 class OtherProductsAdapter(
-    private val list: ArrayList<OtherProducts>
+    private val list: ArrayList<OtherProducts>,
 ) : RecyclerView.Adapter<OtherProductsAdapter.OtherProductsViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): OtherProductsViewHolder {
         return OtherProductsViewHolder(
             HomeSlidingProductItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
     inner class OtherProductsViewHolder(
-        private val binding: HomeSlidingProductItemBinding
+        private val binding: HomeSlidingProductItemBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: OtherProducts) {
             with(binding) {
@@ -38,7 +38,8 @@ class OtherProductsAdapter(
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(
-        holder: OtherProductsViewHolder, position: Int
+        holder: OtherProductsViewHolder,
+        position: Int,
     ) {
         val data = list[position]
         holder.bind(data)
@@ -51,5 +52,4 @@ class OtherProductsAdapter(
         }
         notifyDataSetChanged()
     }
-
 }

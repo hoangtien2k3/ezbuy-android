@@ -6,11 +6,12 @@ import com.ezbuy.data.model.DetailResponse
 import com.ezbuy.data.remote.datasource.DataSource
 import javax.inject.Inject
 
-class DetailRepositoryImpl @Inject constructor(
-    private val dataSource: DataSource
-) : DetailRepository {
-    override suspend fun getDetail(): Resource<DetailResponse> {
-        return handleAPICall { dataSource.getDetail() }
+class DetailRepositoryImpl
+    @Inject
+    constructor(
+        private val dataSource: DataSource,
+    ) : DetailRepository {
+        override suspend fun getDetail(): Resource<DetailResponse> {
+            return handleAPICall { dataSource.getDetail() }
+        }
     }
-
-}

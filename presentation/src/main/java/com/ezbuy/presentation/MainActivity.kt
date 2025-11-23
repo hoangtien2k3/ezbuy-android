@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @SuppressLint("Instantiatable")
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private val viewModel: HomeSharedViewModel by viewModels()
@@ -36,15 +35,16 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
         navController = navHostFragment.navController
 
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeFragment,
-                R.id.detailFragment,
-                R.id.listFragment,
-                R.id.detailBottomSheetFragment,
-                R.id.listLazyColumn
+        val appBarConfiguration =
+            AppBarConfiguration(
+                setOf(
+                    R.id.homeFragment,
+                    R.id.detailFragment,
+                    R.id.listFragment,
+                    R.id.detailBottomSheetFragment,
+                    R.id.listLazyColumn,
+                ),
             )
-        )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
@@ -52,5 +52,4 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return super.onSupportNavigateUp() || navController.navigateUp()
     }
-
 }

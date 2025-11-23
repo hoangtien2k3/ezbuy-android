@@ -1,5 +1,5 @@
 package com.ezbuy.domain.model.list
 
 enum class ListRouteData(val routeID: String) {
-    PRODUCT_ID("1004")
+    PRODUCT_ID("1004"),
 }

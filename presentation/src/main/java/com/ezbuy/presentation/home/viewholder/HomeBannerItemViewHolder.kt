@@ -7,16 +7,21 @@ import com.ezbuy.presentation.common.extension.setImageUrl
 
 class HomeBannerItemViewHolder(private val binding: RowHomeBannerItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(bannerItem: BannerItem, clickListener: ((String?) -> Unit)?) {
+    fun bind(
+        bannerItem: BannerItem,
+        clickListener: ((String?) -> Unit)?,
+    ) {
         binding.bannerImageView.setImageUrl(bannerItem.image)
         bannerClick(clickListener, bannerItem)
     }
 
-    private fun bannerClick(clickListener: ((String?) -> Unit)?, bannerItem: BannerItem) {
+    private fun bannerClick(
+        clickListener: ((String?) -> Unit)?,
+        bannerItem: BannerItem,
+    ) {
         binding.bannerCardView.setOnClickListener {
             clickListener?.invoke(
-                bannerItem.navigationData
+                bannerItem.navigationData,
             )
         }
     }

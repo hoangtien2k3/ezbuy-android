@@ -1,7 +1,7 @@
 package com.ezbuy.data.di
 
 import android.os.Build
-import com.ezbuy.common.utils.Constants.Companion.BASE_URL
+import com.ezbuy.data.BuildConfig
 import com.ezbuy.data.remote.Api
 import dagger.Module
 import dagger.Provides
@@ -16,15 +16,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object  NetworkModule {
-
+internal object NetworkModule {
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.API_DOMAIN)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
 
     @Singleton
     @Provides
@@ -32,16 +32,15 @@ internal object  NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor,
-    ): OkHttpClient {
+    fun provideHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             OkHttpClient.Builder().addNetworkInterceptor(loggingInterceptor)
                 .connectTimeout(Duration.ofSeconds(10))
                 .readTimeout(Duration.ofSeconds(30))
                 .build()
         } else {
-            OkHttpClient.Builder().addNetworkInterceptor(loggingInterceptor)
+            OkHttpClient.Builder()
+                .addNetworkInterceptor(loggingInterceptor)
                 .build()
         }
     }
@@ -53,5 +52,4 @@ internal object  NetworkModule {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
-
 }

@@ -23,7 +23,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
-
     private val viewModel: HomeSharedViewModel by activityViewModels()
 
     private var _binding: FragmentHomeBinding? = null
@@ -38,19 +37,20 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentHomeBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        _binding =
+            FragmentHomeBinding.inflate(
+                inflater,
+                container,
+                false,
+            )
         return binding.root
     }
 
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
         initVMObservers()
@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
                             is GetHomeEvents.Failure -> {
                                 fragmentPopup.show(
                                     requireActivity().supportFragmentManager,
-                                    ERROR_POP_UP_FRAGMENT_TAG
+                                    ERROR_POP_UP_FRAGMENT_TAG,
                                 )
                             }
 
@@ -93,7 +93,6 @@ class HomeFragment : Fragment() {
                     }
                 }
             }
-
         }
     }
 
@@ -126,5 +125,4 @@ class HomeFragment : Fragment() {
     companion object {
         const val ERROR_POP_UP_FRAGMENT_TAG = "error_popup_fragment"
     }
-
 }

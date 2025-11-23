@@ -29,5 +29,5 @@
         android:layout_below="@+id/popupTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_close" />
+        android:src="@drawable/close" />
 </RelativeLayout>

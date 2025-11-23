@@ -11,13 +11,11 @@ data class DetailResponse(
     val questions: String? = null,
     val share: String,
     val otherProducts: List<OtherProduct>? = null,
-    val productOptions: List<String>
+    val productOptions: List<String>,
 ) : ResponseModel
 
 data class OtherProduct(
     val productImage: String? = null,
     val productName: String? = null,
-    val subText: String? = null
+    val subText: String? = null,
 ) : ResponseModel
-
-

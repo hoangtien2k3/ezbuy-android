@@ -10,18 +10,17 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.ezbuy.domain.model.detail.DetailModel
 import com.ezbuy.home.R
 import com.ezbuy.home.databinding.FragmentDetailBottomsheetBinding
 import com.ezbuy.presentation.common.extension.setImageUrl
 import com.ezbuy.presentation.detail.DetailSharedViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailBottomSheetFragment : BottomSheetDialogFragment() {
-
     private var _binding: FragmentDetailBottomsheetBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DetailSharedViewModel by activityViewModels()
@@ -34,14 +33,17 @@ class DetailBottomSheetFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentDetailBottomsheetBinding.inflate(inflater, container, false)
         dialog?.window?.setBackgroundDrawableResource(R.color.dim_color)
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getDetail()
         initVMObservers()

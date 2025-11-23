@@ -10,5 +10,5 @@ data class ProductItem(
     val rating: String?,
     val share: String?,
     val piece: String?,
-    val soldOutText:String?
+    val soldOutText: String?,
 )

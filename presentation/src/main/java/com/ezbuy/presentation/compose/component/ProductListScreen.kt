@@ -23,9 +23,7 @@ import com.ezbuy.presentation.compose.ListLazyColumnViewModel
 import com.ezbuy.presentation.compose.uievent.UIEvent
 
 @Composable
-fun GetProductList(
-    viewModel: ListLazyColumnViewModel = viewModel()
-) {
+fun GetProductList(viewModel: ListLazyColumnViewModel = viewModel()) {
     val viewState by viewModel.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
 
@@ -41,7 +39,7 @@ fun GetProductList(
 
     Column(
         modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         LazyVerticalGrid(
             horizontalArrangement = Arrangement.Center,
@@ -52,8 +50,9 @@ fun GetProductList(
                 viewState.lazyColumnList?.let {
                     items(viewState.lazyColumnList!!) { item ->
                         Box(
-                            modifier = Modifier
-                                .padding(12.dp)
+                            modifier =
+                                Modifier
+                                    .padding(12.dp),
                         ) {
                             ProductCard(item.productImage, item.text) {
                                 viewModel.onIntent(UIEvent.OnToastShow(item.text))
@@ -61,7 +60,7 @@ fun GetProductList(
                         }
                     }
                 }
-            }
+            },
         )
     }
 }

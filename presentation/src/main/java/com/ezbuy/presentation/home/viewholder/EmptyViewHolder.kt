@@ -7,10 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.home.R
 
 class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
     companion object {
-        fun getEmptyViewHolder(parent: ViewGroup) = EmptyViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.row_empty_page, parent, false)
-        )
+        fun getEmptyViewHolder(parent: ViewGroup) =
+            EmptyViewHolder(
+                LayoutInflater.from(parent.context).inflate(R.layout.row_empty_page, parent, false),
+            )
     }
 }

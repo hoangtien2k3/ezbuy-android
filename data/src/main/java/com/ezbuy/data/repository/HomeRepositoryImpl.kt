@@ -6,10 +6,12 @@ import com.ezbuy.data.model.HomeResponse
 import com.ezbuy.data.remote.datasource.DataSource
 import javax.inject.Inject
 
-class HomeRepositoryImpl @Inject constructor(
-    private val dataSource: DataSource
-) : HomeRepository {
-    override suspend fun getHome(): Resource<HomeResponse> {
-        return handleAPICall { dataSource.getHome() }
+class HomeRepositoryImpl
+    @Inject
+    constructor(
+        private val dataSource: DataSource,
+    ) : HomeRepository {
+        override suspend fun getHome(): Resource<HomeResponse> {
+            return handleAPICall { dataSource.getHome() }
+        }
     }
-}

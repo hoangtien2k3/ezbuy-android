@@ -9,15 +9,14 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import com.google.android.material.appbar.AppBarLayout
 import com.ezbuy.domain.model.detail.DetailModel
 import com.ezbuy.home.R
 import com.ezbuy.presentation.common.extension.hide
 import com.ezbuy.presentation.common.extension.show
+import com.google.android.material.appbar.AppBarLayout
 import kotlin.math.abs
 
 class ToolbarTransitionAnimation {
-
     var isToolbarVisible = true
 
     fun collapsingToolbarTransition(
@@ -25,8 +24,8 @@ class ToolbarTransitionAnimation {
         context: Context,
         imageView: ImageView?,
         textView: TextView,
-        icon:ImageView?,
-        data: DetailModel
+        icon: ImageView?,
+        data: DetailModel,
     ) {
         val evaluator = ArgbEvaluator()
         appBarLayout.addOnOffsetChangedListener { _, verticalOffset ->
@@ -36,11 +35,16 @@ class ToolbarTransitionAnimation {
             val startColor = ContextCompat.getColor(context, R.color.transparent)
             val endColor = ContextCompat.getColor(context, R.color.md_theme_dark_secondary)
 
-            val color = if (percentage == 1f) endColor else evaluator.evaluate(
-                percentage,
-                startColor,
-                endColor
-            ) as Int
+            val color =
+                if (percentage == 1f) {
+                    endColor
+                } else {
+                    evaluator.evaluate(
+                        percentage,
+                        startColor,
+                        endColor,
+                    ) as Int
+                }
             imageView?.setColorFilter(color, PorterDuff.Mode.SRC_OVER)
 
             if (percentage == 1f) {
@@ -49,8 +53,9 @@ class ToolbarTransitionAnimation {
                 textView.show()
                 textView.setTextColor(
                     ContextCompat.getColor(
-                        context, R.color.md_theme_light_onSurface
-                    )
+                        context,
+                        R.color.md_theme_light_onSurface,
+                    ),
                 )
                 textView.text = data.productName
                 isToolbarVisible = false
@@ -66,22 +71,23 @@ class ToolbarTransitionAnimation {
     }
 
     private fun animateText(textView: TextView) {
-
-        val translationAnimation = ObjectAnimator.ofFloat(
-            textView,
-            PROPERTY_NAME_Y_AXIS,
-            Y_AXIS_DEFAULT_FLOAT,
-            Y_AXIS_TRANSITIONS_FLOAT
-        )
+        val translationAnimation =
+            ObjectAnimator.ofFloat(
+                textView,
+                PROPERTY_NAME_Y_AXIS,
+                Y_AXIS_DEFAULT_FLOAT,
+                Y_AXIS_TRANSITIONS_FLOAT,
+            )
         translationAnimation.duration = DEFAULT_DURATION_TOP
         translationAnimation.interpolator = AccelerateDecelerateInterpolator()
 
-        val alphaAnimation = ObjectAnimator.ofFloat(
-            textView,
-            PROPERTY_NAME_ALPHA,
-            Y_AXIS_TRANSITIONS_FLOAT,
-            Y_AXIS_ALPHA_FLOAT
-        )
+        val alphaAnimation =
+            ObjectAnimator.ofFloat(
+                textView,
+                PROPERTY_NAME_ALPHA,
+                Y_AXIS_TRANSITIONS_FLOAT,
+                Y_AXIS_ALPHA_FLOAT,
+            )
         alphaAnimation.duration = DEFAULT_DURATION_TOP
         alphaAnimation.interpolator = AccelerateDecelerateInterpolator()
 
@@ -92,12 +98,13 @@ class ToolbarTransitionAnimation {
     }
 
     private fun animateTextDown(textView: TextView) {
-        val translationAnimation = ObjectAnimator.ofFloat(
-            textView,
-            PROPERTY_NAME_Y_AXIS,
-            -textView.height.toFloat(),
-            Y_AXIS_TRANSITIONS_FLOAT
-        )
+        val translationAnimation =
+            ObjectAnimator.ofFloat(
+                textView,
+                PROPERTY_NAME_Y_AXIS,
+                -textView.height.toFloat(),
+                Y_AXIS_TRANSITIONS_FLOAT,
+            )
 
         translationAnimation.duration = DEFAULT_DURATION_DOWN
 

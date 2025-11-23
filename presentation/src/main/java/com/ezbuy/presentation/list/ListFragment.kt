@@ -28,7 +28,6 @@ import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ListFragment : Fragment() {
-
     private val viewModel: ListViewModel by viewModels()
 
     private var _binding: FragmentListsBinding? = null
@@ -42,19 +41,20 @@ class ListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentListsBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        _binding =
+            FragmentListsBinding.inflate(
+                inflater,
+                container,
+                false,
+            )
         return binding.root
     }
 
     override fun onViewCreated(
         view: View,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getList()
@@ -80,7 +80,7 @@ class ListFragment : Fragment() {
                             is GetListEvents.Failure -> {
                                 fragmentPopup.show(
                                     requireActivity().supportFragmentManager,
-                                    HomeFragment.ERROR_POP_UP_FRAGMENT_TAG
+                                    HomeFragment.ERROR_POP_UP_FRAGMENT_TAG,
                                 )
                             }
 
@@ -101,7 +101,6 @@ class ListFragment : Fragment() {
         }
     }
 
-
     private fun bindInitialUI() {
         bindRecyclerView()
     }
@@ -113,26 +112,28 @@ class ListFragment : Fragment() {
             listAdapter = ProductListAdapter()
             adapter = listAdapter
 
-            addOnScrollListener(object : PaginationScrollListener(
-                binding.listRecyclerView.layoutManager as GridLayoutManager
-            ) {
-                override fun loadMoreItems() {
-                    viewModel.setPagingLoading(true)
-                    lifecycleScope.launch {
-                        viewModel.getList()
-                        delay(2000)
-                        viewModel.setPagingLoading(false)
+            addOnScrollListener(
+                object : PaginationScrollListener(
+                    binding.listRecyclerView.layoutManager as GridLayoutManager,
+                ) {
+                    override fun loadMoreItems() {
+                        viewModel.setPagingLoading(true)
+                        lifecycleScope.launch {
+                            viewModel.getList()
+                            delay(2000)
+                            viewModel.setPagingLoading(false)
+                        }
                     }
-                }
 
-                override fun isLastPage(): Boolean {
-                    return TOTAL_COUNT % PRODUCT_LIMIT != 0
-                }
+                    override fun isLastPage(): Boolean {
+                        return TOTAL_COUNT % PRODUCT_LIMIT != 0
+                    }
 
-                override fun isLoading(): Boolean {
-                    return viewModel.isPagingLoading.value
-                }
-            })
+                    override fun isLoading(): Boolean {
+                        return viewModel.isPagingLoading.value
+                    }
+                },
+            )
         }
     }
 

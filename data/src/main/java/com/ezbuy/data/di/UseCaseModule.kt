@@ -23,40 +23,42 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object UseCaseModule {
-
     @Singleton
     @Provides
     fun provideHomeUseCase(
         getHomeRepository: HomeRepository,
         homeDomainModelMapper: HomeDomainModelMapper,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): GetHomeUseCase = GetHomeUseCaseImpl(
-        getHomeRepository,
-        homeDomainModelMapper,
-        dispatcher
-    )
+        @IoDispatcher dispatcher: CoroutineDispatcher,
+    ): GetHomeUseCase =
+        GetHomeUseCaseImpl(
+            getHomeRepository,
+            homeDomainModelMapper,
+            dispatcher,
+        )
 
     @Singleton
     @Provides
     fun provideDetailUseCase(
         getDetailRepository: DetailRepository,
         detailDomainModelMapper: DetailDomainModelMapper,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): GetDetailUseCase = GetDetailUseCaseImpl(
-        getDetailRepository,
-        detailDomainModelMapper,
-        dispatcher
-    )
+        @IoDispatcher dispatcher: CoroutineDispatcher,
+    ): GetDetailUseCase =
+        GetDetailUseCaseImpl(
+            getDetailRepository,
+            detailDomainModelMapper,
+            dispatcher,
+        )
 
     @Singleton
     @Provides
     fun provideListUseCase(
         getListRepository: ListRepository,
         listDomainModelMapper: ListDomainModelMapper,
-        @IoDispatcher dispatcher: CoroutineDispatcher
-    ): GetListUseCase = GetListUseCaseImpl(
-        getListRepository,
-        listDomainModelMapper,
-        dispatcher
-    )
+        @IoDispatcher dispatcher: CoroutineDispatcher,
+    ): GetListUseCase =
+        GetListUseCaseImpl(
+            getListRepository,
+            listDomainModelMapper,
+            dispatcher,
+        )
 }

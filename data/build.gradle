@@ -18,17 +18,32 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "API_DOMAIN", "\"https://raw.githubusercontent.com\"")
+            buildConfigField("String", "API_KEY", "\"bed9cfb9-fad4-41ae-bc4d-09cf7cb552bf\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "API_DOMAIN", "\"https://raw.githubusercontent.com\"")
+            buildConfigField("String", "API_KEY", "\"bed9cfb9-fad4-41ae-bc4d-09cf7cb552bf\"")
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
+
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 

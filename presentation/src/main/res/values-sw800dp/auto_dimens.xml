@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_height">102.40dp</dimen>
+    <dimen name="icon_size">51.20dp</dimen>
+    <dimen name="margin_default">34.13dp</dimen>
+    <dimen name="padding_default">34.13dp</dimen>
+    <dimen name="spacing_large">51.20dp</dimen>
+    <dimen name="spacing_medium">34.13dp</dimen>
+    <dimen name="spacing_normal">25.60dp</dimen>
+    <dimen name="spacing_small">17.07dp</dimen>
+    <dimen name="spacing_tiny">8.53dp</dimen>
+    <dimen name="spacing_xlarge">68.27dp</dimen>
+    <dimen name="text_size_large">38.40sp</dimen>
+    <dimen name="text_size_medium">34.13sp</dimen>
+    <dimen name="text_size_normal">29.87sp</dimen>
+    <dimen name="text_size_small">25.60sp</dimen>
+    <dimen name="text_size_xlarge">42.67sp</dimen>
+</resources>

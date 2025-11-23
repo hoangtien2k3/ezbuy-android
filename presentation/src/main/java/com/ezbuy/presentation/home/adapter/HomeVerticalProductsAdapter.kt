@@ -8,25 +8,26 @@ import com.ezbuy.home.databinding.HomeVerticalProductItemBinding
 import com.ezbuy.presentation.home.viewholder.HomeVerticalProductItemViewHolder
 
 class HomeVerticalProductsAdapter(
-    private val list: ArrayList<ProductItem>
+    private val list: ArrayList<ProductItem>,
 ) : RecyclerView.Adapter<HomeVerticalProductItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): HomeVerticalProductItemViewHolder {
         return HomeVerticalProductItemViewHolder(
             HomeVerticalProductItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(
-        holder: HomeVerticalProductItemViewHolder, position: Int
+        holder: HomeVerticalProductItemViewHolder,
+        position: Int,
     ) {
         val data = list[position]
         holder.bind(data)
@@ -37,5 +38,4 @@ class HomeVerticalProductsAdapter(
         list.addAll(newList)
         notifyDataSetChanged()
     }
-
 }

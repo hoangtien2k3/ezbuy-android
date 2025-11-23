@@ -12,7 +12,6 @@ import com.ezbuy.presentation.detail.adapter.ProductOptionsAdapter
 
 class DetailProductContent(context: Context, attrs: AttributeSet? = null) :
     ConstraintLayout(context, attrs) {
-
     private val binding: LayoutDetailProductContentBinding
 
     init {
@@ -40,7 +39,7 @@ class DetailProductContent(context: Context, attrs: AttributeSet? = null) :
             otherProductsRecyclerView.adapter =
                 OtherProductsAdapter(ArrayList(detailUIModel.otherProducts ?: emptyList()))
             (otherProductsRecyclerView.adapter as? OtherProductsAdapter)?.updateList(
-                detailUIModel.otherProducts
+                detailUIModel.otherProducts,
             )
         }
     }

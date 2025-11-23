@@ -14,6 +14,5 @@ import javax.inject.Singleton
 object DataSourceModule {
     @Singleton
     @Provides
-    fun provideRemoteDataSource(api: Api): DataSource =
-        DataSourceImpl(api)
+    fun provideRemoteDataSource(api: Api): DataSource = DataSourceImpl(api)
 }

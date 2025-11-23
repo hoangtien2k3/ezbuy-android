@@ -13,19 +13,20 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DetailSharedViewModel @Inject constructor(
-    private val getDetailUseCase: GetDetailUseCase
-) : ViewModel() {
+class DetailSharedViewModel
+    @Inject
+    constructor(
+        private val getDetailUseCase: GetDetailUseCase,
+    ) : ViewModel() {
+        private val _detailFlow = MutableSharedFlow<DetailModel?>(extraBufferCapacity = 1)
+        val detailFlow = _detailFlow.asSharedFlow()
 
-    private val _detailFlow = MutableSharedFlow<DetailModel?>(extraBufferCapacity = 1)
-    val detailFlow = _detailFlow.asSharedFlow()
-
-    fun getDetail() {
-        viewModelScope.launch {
-            getDetailUseCase().onSuccess { detailData ->
-                _detailFlow.emit(detailData)
-            }.onFailure {
+        fun getDetail() {
+            viewModelScope.launch {
+                getDetailUseCase().onSuccess { detailData ->
+                    _detailFlow.emit(detailData)
+                }.onFailure {
+                }
             }
         }
     }
-}

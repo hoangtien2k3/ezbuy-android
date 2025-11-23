@@ -7,12 +7,17 @@ import com.ezbuy.presentation.common.extension.viewBinding
 
 class ProductOptionsAdapter(private val data: List<String>) :
     RecyclerView.Adapter<ProductOptionsAdapter.ProductOptionsViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductOptionsViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): ProductOptionsViewHolder {
         return ProductOptionsViewHolder(parent.viewBinding(RowItemProductOptionsBinding::inflate))
     }
 
-    override fun onBindViewHolder(holder: ProductOptionsViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ProductOptionsViewHolder,
+        position: Int,
+    ) {
         holder.bind(data[position])
     }
 
@@ -21,12 +26,10 @@ class ProductOptionsAdapter(private val data: List<String>) :
     }
 
     inner class ProductOptionsViewHolder(
-        private val binding: RowItemProductOptionsBinding
+        private val binding: RowItemProductOptionsBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(productOption: String) {
             binding.productOptionsTextView.text = productOption
         }
     }
-
-
 }
