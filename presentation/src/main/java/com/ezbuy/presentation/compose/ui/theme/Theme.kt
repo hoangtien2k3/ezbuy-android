@@ -39,7 +39,7 @@ private val LightColorScheme =
     )
 
 @Composable
-fun ProductAppTheme(
+fun EzbuyAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

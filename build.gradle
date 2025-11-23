@@ -42,9 +42,8 @@ allprojects {
 
     // Configure test tasks
     tasks.withType(Test).configureEach {
-        maxParallelForks = (Runtime.runtime.availableProcessors() / 2)
-                .clamp(1, Integer.MAX_VALUE)
-                .tap { println("Setting maxParallelForks to $it") }
+        maxParallelForks = Math.max(1, (int) (Runtime.runtime.availableProcessors() / 2))
+        println("Setting maxParallelForks to $maxParallelForks")
         testLogging {
             showExceptions true
             showCauses true

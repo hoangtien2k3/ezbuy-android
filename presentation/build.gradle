@@ -6,6 +6,8 @@ plugins {
     id("dagger.hilt.android.plugin")
 }
 
+apply from: '../auto_dimension.gradle'
+
 android {
     namespace 'com.ezbuy.home'
     compileSdk = libs.versions.compileSdk.get().toInteger()
@@ -87,6 +89,10 @@ dependencies {
     // Misc
     implementation libs.appcompat
     implementation libs.android.core
+
+    // Startup and Timber
+    implementation libs.androidx.startup
+    implementation libs.timber
 
     // Test
     testImplementation libs.junit.core

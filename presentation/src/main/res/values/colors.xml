@@ -23,4 +23,15 @@
     <color name="transparent">#00000000</color>
     <color name="overlay">#99FFFFFF</color>
     <color name="dim_color">#80000000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Missing colors referenced in drawable files -->
+    <color name="red">#F44336</color>
+    <color name="blue">#2196F3</color>
+    <color name="background">#FFFFFF</color>
+    <color name="stroke_color">#E0E0E0</color>
+    <color name="red_input_active_background">#FFEBEE</color>
+    <color name="color_input_back">#F5F5F5</color>
 </resources>
+
