@@ -3,7 +3,7 @@
 
     <application>
         <activity
-            android:name="com.productapp.presentation.compose.ListLazyColumn"
+            android:name="com.ezbuy.presentation.compose.ListLazyColumn"
             android:exported="false"
             android:theme="@style/Theme.ProductApp" />
     </application>

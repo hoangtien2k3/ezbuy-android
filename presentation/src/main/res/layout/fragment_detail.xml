@@ -90,7 +90,7 @@
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.productapp.presentation.detail.customview.DetailProductContent
+    <com.ezbuy.presentation.detail.customview.DetailProductContent
         android:id="@+id/detail_product_content_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

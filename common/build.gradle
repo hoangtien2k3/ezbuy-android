@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace 'com.product.common'
+    namespace 'com.ezbuy.common'
     compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {

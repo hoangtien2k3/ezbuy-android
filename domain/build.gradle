@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace 'com.ezbuy.domain'
     compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
@@ -29,7 +30,6 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    namespace 'com.product.sideapp.domain'
 }
 
 dependencies {

@@ -6,6 +6,7 @@ plugins {
 }
 
 android {
+    namespace 'com.ezbuy.home'
     compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
@@ -48,7 +49,6 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
-    namespace 'com.product.sideapp.home'
 }
 
 dependencies {
