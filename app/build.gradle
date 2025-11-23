@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.productapp'
+    namespace 'com.ezbuy.app'
     compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
-        applicationId "com.example.productapp"
+        applicationId "com.ezbuy.app"
         minSdkVersion libs.versions.minSdk.get().toInteger()
         targetSdkVersion libs.versions.compileSdk.get().toInteger()
         versionCode 1

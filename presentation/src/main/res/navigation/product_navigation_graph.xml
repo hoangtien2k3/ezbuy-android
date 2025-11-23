@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.productapp.presentation.home.HomeFragment"
+        android:name="com.ezbuy.presentation.home.HomeFragment"
         android:label="" >
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.productapp.presentation.detail.DetailFragment"
+        android:name="com.ezbuy.presentation.detail.DetailFragment"
         android:label="" >
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.productapp.presentation.list.ListFragment"
+        android:name="com.ezbuy.presentation.list.ListFragment"
         android:label="" >
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
@@ -42,7 +42,7 @@
     </fragment>
     <activity
         android:id="@+id/listLazyColumn"
-        android:name="com.productapp.presentation.compose.ListLazyColumn"
+        android:name="com.ezbuy.presentation.compose.ListLazyColumn"
         android:label="ListLazyColumn" />
     <dialog
         android:id="@+id/detailBottomSheetFragment"
