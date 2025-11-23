@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "ProductApp"
+rootProject.name = "ezbuy-android"
 include ':app'
 include ':data'
 include ':domain'
