@@ -11,5 +11,5 @@ data class DetailModel(
     val questions: String? = null,
     val share: String,
     val otherProducts: List<OtherProducts>? = null,
-    val productOptions: List<String>
+    val productOptions: List<String>,
 ) : DomainModel

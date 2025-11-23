@@ -13,7 +13,6 @@ import org.junit.Test
 import retrofit2.Response
 
 class DataSourceTest {
-
     private val api = mockk<Api>()
 
     private lateinit var dataSource: DataSourceImpl
@@ -24,24 +23,26 @@ class DataSourceTest {
     }
 
     @Test
-    fun `getHome returns expected response`() = runTest {
-        val expectedResponse = mockk<Response<HomeResponse>>()
+    fun `getHome returns expected response`() =
+        runTest {
+            val expectedResponse = mockk<Response<HomeResponse>>()
 
-        coEvery { api.getHome() } returns expectedResponse
+            coEvery { api.getHome() } returns expectedResponse
 
-        val result = dataSource.getHome()
+            val result = dataSource.getHome()
 
-        assertEquals(expectedResponse, result)
-    }
+            assertEquals(expectedResponse, result)
+        }
 
     @Test
-    fun `getDetail returns expected response`() = runTest {
-        val expectedResponse = mockk<Response<DetailResponse>>()
+    fun `getDetail returns expected response`() =
+        runTest {
+            val expectedResponse = mockk<Response<DetailResponse>>()
 
-        coEvery { api.getDetail() } returns expectedResponse
+            coEvery { api.getDetail() } returns expectedResponse
 
-        val result = dataSource.getDetail()
+            val result = dataSource.getDetail()
 
-        assertEquals(expectedResponse, result)
-    }
+            assertEquals(expectedResponse, result)
+        }
 }

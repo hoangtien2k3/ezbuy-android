@@ -5,10 +5,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavController
 import com.ezbuy.common.extensions.onFailure
 import com.ezbuy.common.extensions.onSuccess
-import com.ezbuy.home.R
 import com.ezbuy.domain.model.list.ListRequestModel
 import com.ezbuy.domain.model.list.ListRouteData
 import com.ezbuy.domain.usecase.GetListUseCase
+import com.ezbuy.home.R
 import com.ezbuy.presentation.list.uievents.GetListEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -21,45 +21,48 @@ import java.io.IOException
 import javax.inject.Inject
 
 @HiltViewModel
-class ListViewModel @Inject constructor(
-    private val getListUseCase: GetListUseCase
-) : ViewModel() {
+class ListViewModel
+    @Inject
+    constructor(
+        private val getListUseCase: GetListUseCase,
+    ) : ViewModel() {
+        private val _listFlow = MutableSharedFlow<GetListEvents>(replay = 1)
+        val listFlow = _listFlow.asSharedFlow()
 
-    private val _listFlow = MutableSharedFlow<GetListEvents>(replay = 1)
-    val listFlow = _listFlow.asSharedFlow()
+        private val _isPagingLoading = MutableStateFlow(false)
+        val isPagingLoading = _isPagingLoading.asStateFlow()
 
-    private val _isPagingLoading = MutableStateFlow(false)
-    val isPagingLoading = _isPagingLoading.asStateFlow()
+        private val _currentPage = MutableStateFlow(1)
+        val currentPage = _currentPage.asStateFlow()
 
-    private val _currentPage = MutableStateFlow(1)
-    val currentPage = _currentPage.asStateFlow()
-
-    fun getList() {
-        viewModelScope.launch {
-            getListUseCase(ListRequestModel(currentPage.value)).onSuccess { listData ->
-                delay(1000) //Backend Response delay
-                _listFlow.emit(
-                    GetListEvents.Success(
-                        listData = listData
+        fun getList() {
+            viewModelScope.launch {
+                getListUseCase(ListRequestModel(currentPage.value)).onSuccess { listData ->
+                    delay(1000) // Backend Response delay
+                    _listFlow.emit(
+                        GetListEvents.Success(
+                            listData = listData,
+                        ),
                     )
-                )
-                _currentPage.value += 1
-            }.onFailure {
-                _listFlow.emit(GetListEvents.Failure(IOException()))
+                    _currentPage.value += 1
+                }.onFailure {
+                    _listFlow.emit(GetListEvents.Failure(IOException()))
+                }
+            }
+        }
+
+        fun setPagingLoading(isPagingLoading: Boolean) {
+            _isPagingLoading.value = isPagingLoading
+        }
+
+        fun handleRouteId(
+            route: String,
+            navController: NavController,
+        ) {
+            when (route) {
+                ListRouteData.PRODUCT_ID.routeID -> {
+                    navController.navigate(R.id.detailBottomSheetFragment)
+                }
             }
         }
     }
-
-    fun setPagingLoading(isPagingLoading: Boolean) {
-        _isPagingLoading.value = isPagingLoading
-    }
-
-    fun handleRouteId(route: String, navController: NavController) {
-        when (route) {
-            ListRouteData.PRODUCT_ID.routeID -> {
-                navController.navigate(R.id.detailBottomSheetFragment)
-            }
-        }
-    }
-
-}

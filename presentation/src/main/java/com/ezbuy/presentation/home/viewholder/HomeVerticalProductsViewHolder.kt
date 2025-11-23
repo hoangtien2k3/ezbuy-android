@@ -8,8 +8,10 @@ import com.ezbuy.presentation.home.adapter.HomeVerticalProductsAdapter
 
 class HomeVerticalProductsViewHolder(private val binding: RowHomeVerticalProductsBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
-    fun bind(productItem: List<ProductItem>, sectionTitle: String) {
+    fun bind(
+        productItem: List<ProductItem>,
+        sectionTitle: String,
+    ) {
         val productLayoutManager =
             LinearLayoutManager(binding.root.context, LinearLayoutManager.VERTICAL, false)
 
@@ -19,6 +21,5 @@ class HomeVerticalProductsViewHolder(private val binding: RowHomeVerticalProduct
             adapter = HomeVerticalProductsAdapter(ArrayList(productItem))
             (adapter as HomeVerticalProductsAdapter).updateList(productItem)
         }
-
     }
 }

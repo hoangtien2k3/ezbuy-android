@@ -16,28 +16,24 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
+    @Singleton
+    @Provides
+    fun provideHomeRepository(dataSource: DataSource): HomeRepository =
+        HomeRepositoryImpl(
+            dataSource,
+        )
 
     @Singleton
     @Provides
-    fun provideHomeRepository(
-        dataSource: DataSource
-    ): HomeRepository = HomeRepositoryImpl(
-        dataSource
-    )
+    fun provideDetailRepository(dataSource: DataSource): DetailRepository =
+        DetailRepositoryImpl(
+            dataSource,
+        )
 
     @Singleton
     @Provides
-    fun provideDetailRepository(
-        dataSource: DataSource
-    ): DetailRepository = DetailRepositoryImpl(
-        dataSource
-    )
-
-    @Singleton
-    @Provides
-    fun provideListRepository(
-        dataSource: DataSource
-    ): ListRepository = ListRepositoryImpl(
-        dataSource
-    )
+    fun provideListRepository(dataSource: DataSource): ListRepository =
+        ListRepositoryImpl(
+            dataSource,
+        )
 }

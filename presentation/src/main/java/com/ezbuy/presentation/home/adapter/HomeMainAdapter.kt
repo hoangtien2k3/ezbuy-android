@@ -19,7 +19,6 @@ import com.ezbuy.presentation.home.viewholder.HomeSlidableProductsViewHolder
 import com.ezbuy.presentation.home.viewholder.HomeVerticalProductsViewHolder
 
 class HomeMainAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
     private var homeSections: ArrayList<HomeSectionAdapterItem> = arrayListOf()
 
     private var clickListener: ((String?) -> Unit)? = null
@@ -37,33 +36,33 @@ class HomeMainAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): RecyclerView.ViewHolder {
         return when (viewType) {
-
             VIEW_TYPE_BANNER -> {
                 HomeBannerViewHolder(
                     parent.viewBinding(RowHomeBannerBinding::inflate),
-                    clickListener
+                    clickListener,
                 )
             }
-
 
             VIEW_TYPE_FLEX_BOX_PRODUCTS -> {
                 HomeFlexBoxProductsViewHolder(
-                    parent.viewBinding(RowHomeFlexBoxProductsBinding::inflate)
+                    parent.viewBinding(RowHomeFlexBoxProductsBinding::inflate),
                 )
             }
 
-
             VIEW_TYPE_SLIDABLE_PRODUCTS -> {
                 HomeSlidableProductsViewHolder(
-                    parent.viewBinding(RowHomeSlidableProductsBinding::inflate)
+                    parent.viewBinding(RowHomeSlidableProductsBinding::inflate),
                 )
             }
 
             VIEW_TYPE_VERTICAL_PRODUCTS -> {
                 HomeVerticalProductsViewHolder(
-                    parent.viewBinding(RowHomeVerticalProductsBinding::inflate)
+                    parent.viewBinding(RowHomeVerticalProductsBinding::inflate),
                 )
             }
 
@@ -77,7 +76,10 @@ class HomeMainAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun getItemViewType(position: Int) = homeSections[position].viewType
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: RecyclerView.ViewHolder,
+        position: Int,
+    ) {
         val currentSectionPosition = homeSections[position]
         when (holder) {
             is HomeFlexBoxProductsViewHolder -> {
@@ -105,5 +107,4 @@ class HomeMainAdapter() : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             }
         }
     }
-
 }

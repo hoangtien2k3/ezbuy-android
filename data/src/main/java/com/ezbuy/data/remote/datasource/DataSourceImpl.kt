@@ -7,23 +7,24 @@ import com.ezbuy.data.remote.Api
 import retrofit2.Response
 import javax.inject.Inject
 
-internal class DataSourceImpl @Inject constructor(
-    private val api: Api
-) : DataSource {
+internal class DataSourceImpl
+    @Inject
+    constructor(
+        private val api: Api,
+    ) : DataSource {
+        override suspend fun getHome(): Response<HomeResponse> {
+            return api.getHome()
+        }
 
-    override suspend fun getHome(): Response<HomeResponse> {
-        return api.getHome()
-    }
+        override suspend fun getDetail(): Response<DetailResponse> {
+            return api.getDetail()
+        }
 
-    override suspend fun getDetail(): Response<DetailResponse> {
-        return api.getDetail()
-    }
+        override suspend fun getListFirst(): Response<ListResponse> {
+            return api.getListPageFirst()
+        }
 
-    override suspend fun getListFirst(): Response<ListResponse> {
-        return api.getListPageFirst()
+        override suspend fun getListSecond(): Response<ListResponse> {
+            return api.getListPageSecond()
+        }
     }
-
-    override suspend fun getListSecond(): Response<ListResponse> {
-        return api.getListPageSecond()
-    }
-}

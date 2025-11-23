@@ -9,9 +9,8 @@ import com.ezbuy.presentation.common.extension.show
 
 class HomeFlexBoxProductItemViewHolder(private val binding: HomeFlexBoxProductItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
     fun bind(product: ProductItem) {
-        with(binding){
+        with(binding) {
             flexBoxProductNameTextView.text = product.text
             flexBoxProductPriceTextView.text = product.subText
             flexBoxProductPieceTextView.text = product.piece
@@ -25,6 +24,6 @@ class HomeFlexBoxProductItemViewHolder(private val binding: HomeFlexBoxProductIt
                 flexBoxProductOverlayView.hide()
                 flexBoxProductSoldOutTextView.hide()
             }
-         }
+        }
     }
 }

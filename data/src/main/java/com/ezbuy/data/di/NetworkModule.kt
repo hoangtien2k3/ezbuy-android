@@ -17,14 +17,14 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
-
     @Singleton
     @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.API_DOMAIN)
-        .addConverterFactory(GsonConverterFactory.create())
-        .client(okHttpClient)
-        .build()
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.API_DOMAIN)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
+            .build()
 
     @Singleton
     @Provides
@@ -32,9 +32,7 @@ internal object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor,
-    ): OkHttpClient {
+    fun provideHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             OkHttpClient.Builder().addNetworkInterceptor(loggingInterceptor)
                 .connectTimeout(Duration.ofSeconds(10))
@@ -54,5 +52,4 @@ internal object NetworkModule {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
-
 }

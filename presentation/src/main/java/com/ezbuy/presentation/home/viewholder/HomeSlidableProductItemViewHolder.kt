@@ -7,7 +7,6 @@ import com.ezbuy.presentation.common.extension.setImageUrl
 
 class HomeSlidableProductItemViewHolder(private val binding: HomeSlidingProductItemBinding) :
     RecyclerView.ViewHolder(binding.root) {
-
     fun bind(product: ProductItem) {
         with(binding) {
             slidingProductNameTextView.text = product.text

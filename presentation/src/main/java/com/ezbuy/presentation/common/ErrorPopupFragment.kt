@@ -9,25 +9,29 @@ import com.ezbuy.home.R
 import com.ezbuy.home.databinding.FragmentPopupBinding
 
 class ErrorPopupFragment : DialogFragment() {
-
     private var _binding: FragmentPopupBinding? = null
     private val binding get() = _binding!!
 
     private val popupIcon: Int = R.drawable.popup_error_icon
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentPopupBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        _binding =
+            FragmentPopupBinding.inflate(
+                inflater,
+                container,
+                false,
+            )
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         bindUI()
     }
@@ -46,6 +50,4 @@ class ErrorPopupFragment : DialogFragment() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }

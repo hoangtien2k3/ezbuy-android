@@ -5,5 +5,6 @@ import com.ezbuy.data.model.ListResponse
 
 interface ListRepository {
     suspend fun getListFirst(): Resource<ListResponse>
+
     suspend fun getListSecond(): Resource<ListResponse>
 }

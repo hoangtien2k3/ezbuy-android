@@ -9,15 +9,14 @@ import com.ezbuy.presentation.common.extension.setImageUrl
 
 class ProductListAdapter() :
     RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder>() {
-
     private var productList: ArrayList<ListProductsModel> = arrayListOf()
-
 
     private var clickListener: ((String?) -> Unit)? = null
 
     fun listProductItemClickListener(productItemClickListener: ((String?) -> Unit)?) {
         clickListener = productItemClickListener
     }
+
     fun updateProductList(itemList: List<ListProductsModel>?) {
         itemList?.let {
             productList.addAll(it)
@@ -25,26 +24,35 @@ class ProductListAdapter() :
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductListViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): ProductListViewHolder {
         return ProductListViewHolder(
             ListProductItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
     override fun getItemCount(): Int = productList.size
 
-    override fun onBindViewHolder(holder: ProductListViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: ProductListViewHolder,
+        position: Int,
+    ) {
         val product = productList[position]
         holder.bind(product, clickListener)
     }
 
     inner class ProductListViewHolder(private val binding: ListProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(product: ListProductsModel, clickListener: ((String?) -> Unit)?) {
+        fun bind(
+            product: ListProductsModel,
+            clickListener: ((String?) -> Unit)?,
+        ) {
             with(binding) {
                 product.apply {
                     listProductImageView.setImageUrl(productImage)
@@ -56,7 +64,7 @@ class ProductListAdapter() :
                 }
                 binding.rootConstraintLayout.setOnClickListener {
                     clickListener?.invoke(
-                        product.productId
+                        product.productId,
                     )
                 }
             }

@@ -8,9 +8,8 @@ import com.ezbuy.presentation.home.adapter.HomeBannerAdapter
 
 class HomeBannerViewHolder(
     private val binding: RowHomeBannerBinding,
-    private val clickListener: ((String?) -> Unit)?
+    private val clickListener: ((String?) -> Unit)?,
 ) : RecyclerView.ViewHolder(binding.root) {
-
     private lateinit var bannerTimer: CountDownTimer
     private var currentPosition = 0
 
@@ -28,22 +27,20 @@ class HomeBannerViewHolder(
         binding.viewPager.setCurrentItem(currentPosition, true)
     }
 
-
     private fun startBannerTimer(bannerSize: Int) {
-        bannerTimer = object : CountDownTimer(Long.MAX_VALUE, bannerInterval) {
-            override fun onTick(millisUntilFinished: Long) {
-                moveToNextBannerItem(bannerSize)
-            }
+        bannerTimer =
+            object : CountDownTimer(Long.MAX_VALUE, bannerInterval) {
+                override fun onTick(millisUntilFinished: Long) {
+                    moveToNextBannerItem(bannerSize)
+                }
 
-            override fun onFinish() {
+                override fun onFinish() {
+                }
             }
-        }
         bannerTimer.start()
-
     }
 
     companion object {
         const val bannerInterval: Long = 3000
     }
-
 }

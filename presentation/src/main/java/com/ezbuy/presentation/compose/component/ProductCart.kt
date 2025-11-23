@@ -24,43 +24,49 @@ import com.bumptech.glide.integration.compose.GlideImage
 fun ProductCard(
     glideImage: String,
     productName: String,
-    productClick: () -> Unit
+    productClick: () -> Unit,
 ) {
     Card(
-        modifier = Modifier
-            .height(180.dp)
-            .width(150.dp),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = 12.dp
-        ),
+        modifier =
+            Modifier
+                .height(180.dp)
+                .width(150.dp),
+        elevation =
+            CardDefaults.cardElevation(
+                defaultElevation = 12.dp,
+            ),
         shape = CutCornerShape(6.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.White
-        ),
-        onClick = { productClick() }
+        colors =
+            CardDefaults.cardColors(
+                containerColor = Color.White,
+            ),
+        onClick = { productClick() },
     ) {
         GlideImage(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .padding(top = 4.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(top = 4.dp),
             model = glideImage,
-            contentDescription = ""
+            contentDescription = "",
         )
         Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(
-                    start = 10.dp,
-                    end = 10.dp,
-                    top = 8.dp
-                ),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(
+                        start = 10.dp,
+                        end = 10.dp,
+                        top = 8.dp,
+                    ),
             text = productName,
-            style = MaterialTheme.typography.titleSmall.copy(
-                fontSize = 14.sp,
-                fontWeight = FontWeight.W500,
-                lineHeight = 16.sp
-            )
+            style =
+                MaterialTheme.typography.titleSmall.copy(
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.W500,
+                    lineHeight = 16.sp,
+                ),
         )
     }
 }

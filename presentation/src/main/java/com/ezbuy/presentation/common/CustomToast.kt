@@ -12,9 +12,12 @@ import com.ezbuy.presentation.common.extension.hide
 import com.ezbuy.presentation.common.extension.show
 
 class CustomToast(private val context: Context) {
-
     @SuppressLint("InflateParams")
-    fun showCustomToast(icon: Int?, text: String, toastDuration: Int) {
+    fun showCustomToast(
+        icon: Int?,
+        text: String,
+        toastDuration: Int,
+    ) {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val layout = inflater.inflate(R.layout.custom_toast_view, null)
 
@@ -38,6 +41,5 @@ class CustomToast(private val context: Context) {
             setGravity(Gravity.TOP, 0, 0)
             show()
         }
-
     }
 }

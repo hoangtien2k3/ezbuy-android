@@ -8,18 +8,18 @@ import com.ezbuy.home.databinding.HomeFlexBoxProductItemBinding
 import com.ezbuy.presentation.home.viewholder.HomeFlexBoxProductItemViewHolder
 
 class HomeFlexBoxProductsAdapter(
-    private val list: ArrayList<ProductItem>
+    private val list: ArrayList<ProductItem>,
 ) : RecyclerView.Adapter<HomeFlexBoxProductItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): HomeFlexBoxProductItemViewHolder {
         return HomeFlexBoxProductItemViewHolder(
             HomeFlexBoxProductItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
@@ -27,7 +27,7 @@ class HomeFlexBoxProductsAdapter(
 
     override fun onBindViewHolder(
         holder: HomeFlexBoxProductItemViewHolder,
-        position: Int
+        position: Int,
     ) {
         val data = list[position]
         holder.bind(data)
@@ -38,5 +38,4 @@ class HomeFlexBoxProductsAdapter(
         list.addAll(newList)
         notifyDataSetChanged()
     }
-
 }

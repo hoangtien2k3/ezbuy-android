@@ -9,24 +9,28 @@ import com.ezbuy.presentation.home.viewholder.HomeBannerItemViewHolder
 
 class HomeBannerAdapter(
     private val bannerItems: List<BannerItem>,
-    private val clickListener: ((String?) -> Unit)?
+    private val clickListener: ((String?) -> Unit)?,
 ) : RecyclerView.Adapter<HomeBannerItemViewHolder>() {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerItemViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): HomeBannerItemViewHolder {
         return HomeBannerItemViewHolder(
             RowHomeBannerItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
-    override fun onBindViewHolder(holder: HomeBannerItemViewHolder, position: Int) {
+    override fun onBindViewHolder(
+        holder: HomeBannerItemViewHolder,
+        position: Int,
+    ) {
         val currentItem = bannerItems[position % bannerItems.size]
         holder.bind(currentItem, clickListener)
     }
 
     override fun getItemCount(): Int = bannerItems.size * 1000
-
 }

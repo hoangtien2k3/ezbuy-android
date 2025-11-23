@@ -1,18 +1,18 @@
 package com.ezbuy.data.model
 
-import com.google.gson.annotations.SerializedName
 import com.ezbuy.common.model.ResponseModel
+import com.google.gson.annotations.SerializedName
 
 data class HomeResponse(
     @SerializedName("sections")
-    val sections: List<Section>
+    val sections: List<Section>,
 ) : ResponseModel
 
 data class Section(
     @SerializedName("sectionData")
     val sectionData: List<HomeSection>,
     val sectionTitle: String? = null,
-    val type: Int
+    val type: Int,
 ) : ResponseModel
 
 data class HomeSection(
@@ -28,5 +28,5 @@ data class HomeSection(
     val subText: String? = null,
     val text: String? = null,
     val piece: String? = null,
-    val soldOutText: String? = null
+    val soldOutText: String? = null,
 ) : ResponseModel

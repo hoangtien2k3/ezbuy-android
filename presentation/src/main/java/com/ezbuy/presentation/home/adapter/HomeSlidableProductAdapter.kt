@@ -4,30 +4,30 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.ProductItem
-
 import com.ezbuy.home.databinding.HomeSlidingProductItemBinding
 import com.ezbuy.presentation.home.viewholder.HomeSlidableProductItemViewHolder
 
 class HomeSlidableProductAdapter(
-    private val list: ArrayList<ProductItem>
+    private val list: ArrayList<ProductItem>,
 ) : RecyclerView.Adapter<HomeSlidableProductItemViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): HomeSlidableProductItemViewHolder {
         return HomeSlidableProductItemViewHolder(
             HomeSlidingProductItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
-                false
-            )
+                false,
+            ),
         )
     }
 
     override fun getItemCount() = list.size
 
     override fun onBindViewHolder(
-        holder: HomeSlidableProductItemViewHolder, position: Int
+        holder: HomeSlidableProductItemViewHolder,
+        position: Int,
     ) {
         val data = list[position]
         holder.bind(data)
@@ -38,5 +38,4 @@ class HomeSlidableProductAdapter(
         list.addAll(newList)
         notifyDataSetChanged()
     }
-
 }

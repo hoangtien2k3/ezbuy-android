@@ -25,12 +25,10 @@ import java.io.IOException
 
 @ExperimentalCoroutinesApi
 class ListViewModelTest {
-
     private val testDispatcher = StandardTestDispatcher()
 
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule(testDispatcher)
-
 
     private val getListUseCase = mockk<GetListUseCase>()
     private lateinit var listViewModel: ListViewModel
@@ -41,38 +39,38 @@ class ListViewModelTest {
     }
 
     @Test
-    fun `getList emits success event`() = runTest {
-        val mockedListModel = mockk<ListModel>()
-        val listRequestModel = ListRequestModel(1)
-        coEvery { getListUseCase(listRequestModel) } returns Resource.Success(mockedListModel)
+    fun `getList emits success event`() =
+        runTest {
+            val mockedListModel = mockk<ListModel>()
+            val listRequestModel = ListRequestModel(1)
+            coEvery { getListUseCase(listRequestModel) } returns Resource.Success(mockedListModel)
 
-        val events = MutableSharedFlow<GetListEvents>()
-        val job = launch { listViewModel.listFlow.collect { events.emit(it) } }
+            val events = MutableSharedFlow<GetListEvents>()
+            val job = launch { listViewModel.listFlow.collect { events.emit(it) } }
 
-        listViewModel.getList()
+            listViewModel.getList()
 
-        val event = events.first()
+            val event = events.first()
 
-        assertTrue(event is GetListEvents.Success)
+            assertTrue(event is GetListEvents.Success)
 
-        job.cancel()
-    }
+            job.cancel()
+        }
 
     @Test
-    fun `getList emits failure event`() = runTest {
-        val failureEvent = Resource.Failure(IOException("Network error"))
-        coEvery { getListUseCase(ListRequestModel(1)) } returns failureEvent
+    fun `getList emits failure event`() =
+        runTest {
+            val failureEvent = Resource.Failure(IOException("Network error"))
+            coEvery { getListUseCase(ListRequestModel(1)) } returns failureEvent
 
-        val events = mutableListOf<GetListEvents>()
-        val job = launch { listViewModel.listFlow.toList(events) }
+            val events = mutableListOf<GetListEvents>()
+            val job = launch { listViewModel.listFlow.toList(events) }
 
-        listViewModel.getList()
-        advanceUntilIdle()
+            listViewModel.getList()
+            advanceUntilIdle()
 
-        assertTrue(events.any { it is GetListEvents.Failure })
+            assertTrue(events.any { it is GetListEvents.Failure })
 
-        job.cancel()
-
-    }
-
+            job.cancel()
+        }
 }

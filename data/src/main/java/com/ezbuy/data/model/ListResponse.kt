@@ -5,7 +5,7 @@ import com.ezbuy.common.model.ResponseModel
 data class ListResponse(
     val listResponse: List<ListProducts>,
     val productLimit: Int,
-    val totalCount: Int
+    val totalCount: Int,
 ) : ResponseModel
 
 data class ListProducts(
@@ -15,5 +15,5 @@ data class ListProducts(
     val subText: String,
     val review: String,
     val questions: String,
-    val rating: String
-): ResponseModel
+    val rating: String,
+) : ResponseModel
