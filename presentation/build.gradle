@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'org.jetbrains.kotlin.plugin.compose'
     id 'kotlin-kapt'
     id("dagger.hilt.android.plugin")
 }
@@ -12,17 +13,12 @@ android {
     defaultConfig {
         minSdkVersion libs.versions.minSdk.get().toInteger()
         targetSdkVersion libs.versions.compileSdk.get().toInteger()
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
-        vectorDrawables {
-            useSupportLibrary true
-        }
+        vectorDrawables { useSupportLibrary true }
     }
 
-    lintOptions {
-        disable 'Instantiatable'
-    }
+    lintOptions { disable 'Instantiatable' }
 
     buildTypes {
         release {
@@ -30,20 +26,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
+    kotlinOptions { jvmTarget = '17' }
+
     buildFeatures {
         viewBinding = true
-        compose true
+        compose = true
     }
+
     composeOptions {
-        kotlinCompilerExtensionVersion '1.4.5'
+        // Compose compiler version compatible with Kotlin 2.2.21
+        kotlinCompilerExtensionVersion '1.6.0-alpha08-k2.2.0'
     }
+
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
@@ -55,6 +54,7 @@ dependencies {
     implementation project(path: ':domain')
     implementation project(path: ':common')
 
+    // AndroidX & Compose
     implementation libs.lifecycle.ktx
     implementation libs.compose.activity
     implementation libs.compose.ui.graphics
@@ -72,19 +72,22 @@ dependencies {
     implementation libs.swipe.to.refresh
     implementation libs.compose.glide
     implementation libs.hilt.core
-//    implementation libs.androidx.startup
-//    implementation libs.timber
+
+    // Hilt & Navigation
     kapt libs.hilt.compiler
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
+
+    // Misc
     implementation libs.appcompat
     implementation libs.android.core
+
+    // Test
     testImplementation libs.junit.core
     androidTestImplementation libs.junit.test
     androidTestImplementation libs.espresso.core
     implementation libs.hilt.test
     kaptAndroidTest libs.hilt.compiler
-
     testImplementation(libs.mockk.core)
     testImplementation(libs.mockk.android)
     testImplementation(libs.coroutines.test)
