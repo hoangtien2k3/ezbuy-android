@@ -1,5 +1,4 @@
 [versions]
-# @keep
 compileSdk = "34"
 minSdk = "24"
 androidCore = "1.12.0"
@@ -30,6 +29,9 @@ hiltTesting = "2.44"
 rxJava = "2.1.1"
 composeMaterial = "1.2.0"
 fragmenKtx = "1.6.2"
+androidx-startup = "1.1.1"
+timber = "5.0.1"
+material = "1.12.0"
 
 [libraries]
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -65,4 +67,7 @@ rx-java-android = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rx
 compose-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 paging = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
 compose-ui-material = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmenKtx" }
+androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }

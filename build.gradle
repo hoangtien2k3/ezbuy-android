@@ -1,3 +1,6 @@
+import org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
     id 'com.android.application' version '8.0.2' apply false
@@ -7,14 +10,14 @@ plugins {
 }
 
 allprojects {
-    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    tasks.withType(KotlinCompile).configureEach {
         kotlinOptions {
             jvmTarget = "1.8"
         }
     }
     
     afterEvaluate {
-        tasks.withType(org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask).configureEach {
+        tasks.withType(KaptGenerateStubsTask).configureEach {
             kotlinOptions {
                 jvmTarget = "1.8"
             }
