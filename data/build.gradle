@@ -30,13 +30,18 @@ android {
             buildConfigField("String", "API_KEY", "\"bed9cfb9-fad4-41ae-bc4d-09cf7cb552bf\"")
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = '17'
+
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
     }
+
     buildFeatures {
         buildConfig = true
     }
