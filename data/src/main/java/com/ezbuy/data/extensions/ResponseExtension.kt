@@ -21,13 +21,21 @@ suspend fun <T : ResponseModel> handleAPICall(
 }
 
 private fun <T : ResponseModel> Response<T>.handleAPIResponse(): Resource<T> {
-    val responseBody = body() as T
-    if (isSuccess()) {
-        return Resource.Success(responseBody)
+    if (isSuccessful) {
+        val responseBody = body()
+        return if (responseBody != null) {
+            Resource.Success(responseBody)
+        } else {
+            Resource.Failure(IOException("Response body is null"))
+        }
     }
-    return Resource.Failure(
-        IOException()
-    )
+    
+    // Handle error responses
+    val errorMessage = try {
+        errorBody()?.string() ?: "Unknown error occurred"
+    } catch (e: Exception) {
+        "Error reading error body: ${e.message}"
+    }
+    
+    return Resource.Failure(IOException("HTTP ${code()}: $errorMessage"))
 }
-
-private fun <T : ResponseModel> Response<T>.isSuccess(): Boolean = isSuccessful
