@@ -1,0 +1,43 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '8.0.2' apply false
+    id 'com.android.library' version '8.0.2' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.20' apply false
+    id 'com.google.dagger.hilt.android' version '2.47' apply false
+}
+
+allprojects {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            jvmTarget = "1.8"
+        }
+    }
+    
+    afterEvaluate {
+        tasks.withType(org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask).configureEach {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
+    }
+}
+
+subprojects {
+    // Apply KAPT configuration to all subprojects that use the kotlin-kapt plugin
+    pluginManager.withPlugin('kotlin-kapt') {
+        kapt {
+            javacOptions {
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.comp=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.jvm=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.processing=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED")
+                option("--add-opens", "jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED")
+            }
+        }
+    }
+}

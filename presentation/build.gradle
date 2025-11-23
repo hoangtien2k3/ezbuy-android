@@ -1,0 +1,89 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id("dagger.hilt.android.plugin")
+}
+
+android {
+    compileSdk = libs.versions.compileSdk.get().toInteger()
+
+    defaultConfig {
+        minSdkVersion libs.versions.minSdk.get().toInteger()
+        targetSdkVersion libs.versions.compileSdk.get().toInteger()
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    lintOptions {
+        disable 'Instantiatable'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding = true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.4.5'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+    namespace 'com.product.sideapp.home'
+}
+
+dependencies {
+    implementation project(path: ':domain')
+    implementation project(path: ':common')
+
+    implementation libs.lifecycle.ktx
+    implementation libs.compose.activity
+    implementation libs.compose.ui.graphics
+    implementation libs.compose.ui.material
+    implementation libs.fragment.ktx
+    implementation libs.compose.hilt.navigation
+    implementation libs.compose.view.model
+    implementation libs.compose.lifecycle
+    implementation libs.view.pager
+    implementation libs.flex.box
+    implementation libs.shimmer
+    implementation libs.paging
+    implementation libs.lottie
+    implementation libs.glide
+    implementation libs.swipe.to.refresh
+    implementation libs.compose.glide
+    implementation libs.hilt.core
+    kapt libs.hilt.compiler
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
+    implementation libs.appcompat
+    implementation libs.android.core
+    testImplementation libs.junit.core
+    androidTestImplementation libs.junit.test
+    androidTestImplementation libs.espresso.core
+    implementation libs.hilt.test
+    kaptAndroidTest libs.hilt.compiler
+
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.coroutines.test)
+}
