@@ -18,9 +18,16 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "API_DOMAIN", "\"https://raw.githubusercontent.com\"")
+            buildConfigField("String", "API_KEY", "\"bed9cfb9-fad4-41ae-bc4d-09cf7cb552bf\"")
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "API_DOMAIN", "\"https://raw.githubusercontent.com\"")
+            buildConfigField("String", "API_KEY", "\"bed9cfb9-fad4-41ae-bc4d-09cf7cb552bf\"")
         }
     }
     compileOptions {
@@ -29,6 +36,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 

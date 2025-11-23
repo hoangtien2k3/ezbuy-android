@@ -1,7 +1,7 @@
 package com.ezbuy.data.di
 
 import android.os.Build
-import com.ezbuy.common.utils.Constants.Companion.BASE_URL
+import com.ezbuy.data.BuildConfig
 import com.ezbuy.data.remote.Api
 import dagger.Module
 import dagger.Provides
@@ -16,12 +16,12 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-internal object  NetworkModule {
+internal object NetworkModule {
 
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(BuildConfig.API_DOMAIN)
         .addConverterFactory(GsonConverterFactory.create())
         .client(okHttpClient)
         .build()
@@ -41,7 +41,8 @@ internal object  NetworkModule {
                 .readTimeout(Duration.ofSeconds(30))
                 .build()
         } else {
-            OkHttpClient.Builder().addNetworkInterceptor(loggingInterceptor)
+            OkHttpClient.Builder()
+                .addNetworkInterceptor(loggingInterceptor)
                 .build()
         }
     }

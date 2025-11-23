@@ -12,7 +12,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object DispatcherModule {
-
     @Singleton
     @DefaultDispatcher
     @Provides
@@ -27,9 +26,7 @@ object DispatcherModule {
     @MainDispatcher
     @Provides
     fun providesMainDispatcher(): CoroutineDispatcher = Dispatchers.Main
-
 }
-
 
 @Retention(AnnotationRetention.BINARY)
 @Qualifier

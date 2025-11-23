@@ -72,8 +72,8 @@ dependencies {
     implementation libs.swipe.to.refresh
     implementation libs.compose.glide
     implementation libs.hilt.core
-    implementation libs.androidx.startup
-    implementation libs.timber
+//    implementation libs.androidx.startup
+//    implementation libs.timber
     kapt libs.hilt.compiler
     implementation libs.navigation.fragment.ktx
     implementation libs.navigation.ui.ktx
