@@ -2,7 +2,7 @@ package com.ezbuy.presentation.home.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.ProductItem
-import com.ezbuy.home.databinding.RowHomeFlexBoxProductsBinding
+import com.ezbuy.presentation.databinding.RowHomeFlexBoxProductsBinding
 import com.ezbuy.presentation.home.adapter.HomeFlexBoxProductsAdapter
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexboxLayoutManager

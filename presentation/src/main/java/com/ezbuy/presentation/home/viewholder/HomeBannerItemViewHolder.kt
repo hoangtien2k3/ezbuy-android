@@ -2,8 +2,8 @@ package com.ezbuy.presentation.home.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.BannerItem
-import com.ezbuy.home.databinding.RowHomeBannerItemBinding
 import com.ezbuy.presentation.common.extension.setImageUrl
+import com.ezbuy.presentation.databinding.RowHomeBannerItemBinding
 
 class HomeBannerItemViewHolder(private val binding: RowHomeBannerItemBinding) :
     RecyclerView.ViewHolder(binding.root) {

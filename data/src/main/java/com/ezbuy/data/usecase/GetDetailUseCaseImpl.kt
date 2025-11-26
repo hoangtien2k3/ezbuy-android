@@ -20,6 +20,10 @@ class GetDetailUseCaseImpl
         override suspend operator fun invoke(): Resource<DetailModel> {
             return withContext(dispatcher) {
                 when (val resource = getDetailRepository.getDetail()) {
+                    is Resource.Loading -> {
+                        Resource.Loading
+                    }
+
                     is Resource.Success -> {
                         Resource.Success(detailMapper.mapToDomainModel(resource.data))
                     }

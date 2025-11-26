@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ezbuy.domain.model.detail.DetailModel
-import com.ezbuy.home.databinding.LayoutDetailProductContentBinding
+import com.ezbuy.presentation.databinding.LayoutDetailProductContentBinding
 import com.ezbuy.presentation.detail.adapter.OtherProductsAdapter
 import com.ezbuy.presentation.detail.adapter.ProductOptionsAdapter
 

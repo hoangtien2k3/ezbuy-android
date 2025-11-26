@@ -32,6 +32,7 @@ fragmenKtx = "1.6.2"
 androidx-startup = "1.1.1"
 timber = "5.0.1"
 material = "1.12.0"
+motiontoast = "1.4"
 
 [libraries]
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -71,3 +72,4 @@ material = { group = "com.google.android.material", name = "material", version.r
 fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmenKtx" }
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+motionToast = { module = "com.github.Spikeysanju:MotionToast", version.ref = "motiontoast" }

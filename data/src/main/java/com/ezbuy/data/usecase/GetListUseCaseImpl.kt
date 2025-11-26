@@ -28,6 +28,11 @@ class GetListUseCaseImpl
 
             return withContext(dispatcher) {
                 when (resource) {
+                    is Resource.Loading -> {
+                        Resource.Loading
+//                        LoadingScreen.displayLoading(requireContext(), false)
+                    }
+
                     is Resource.Success -> {
                         Resource.Success(getListMapper.mapToDomainModel(resource.data))
                     }

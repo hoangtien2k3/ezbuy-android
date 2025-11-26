@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.ezbuy.home.R
-import com.ezbuy.home.databinding.FragmentPopupBinding
+import com.ezbuy.presentation.R
+import com.ezbuy.presentation.databinding.FragmentPopupBinding
 
 class ErrorPopupFragment : DialogFragment() {
     private var _binding: FragmentPopupBinding? = null

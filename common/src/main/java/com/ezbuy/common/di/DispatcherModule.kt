@@ -30,12 +30,15 @@ object DispatcherModule {
 
 @Retention(AnnotationRetention.BINARY)
 @Qualifier
+@Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
 annotation class DefaultDispatcher
 
 @Retention(AnnotationRetention.BINARY)
 @Qualifier
+@Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
 annotation class IoDispatcher
 
 @Retention(AnnotationRetention.BINARY)
 @Qualifier
+@Target(AnnotationTarget.VALUE_PARAMETER, AnnotationTarget.FIELD, AnnotationTarget.FUNCTION)
 annotation class MainDispatcher

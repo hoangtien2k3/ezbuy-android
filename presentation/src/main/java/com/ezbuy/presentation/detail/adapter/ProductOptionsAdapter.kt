@@ -2,8 +2,8 @@ package com.ezbuy.presentation.detail.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ezbuy.home.databinding.RowItemProductOptionsBinding
 import com.ezbuy.presentation.common.extension.viewBinding
+import com.ezbuy.presentation.databinding.RowItemProductOptionsBinding
 
 class ProductOptionsAdapter(private val data: List<String>) :
     RecyclerView.Adapter<ProductOptionsAdapter.ProductOptionsViewHolder>() {

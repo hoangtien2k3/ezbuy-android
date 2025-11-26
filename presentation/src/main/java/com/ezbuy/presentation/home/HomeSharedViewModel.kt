@@ -8,7 +8,7 @@ import com.ezbuy.common.extensions.onSuccess
 import com.ezbuy.domain.model.home.HomeRouteData
 import com.ezbuy.domain.model.home.HomeSectionAdapterItem
 import com.ezbuy.domain.usecase.GetHomeUseCase
-import com.ezbuy.home.R
+import com.ezbuy.presentation.R
 import com.ezbuy.presentation.home.uievents.GetHomeEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

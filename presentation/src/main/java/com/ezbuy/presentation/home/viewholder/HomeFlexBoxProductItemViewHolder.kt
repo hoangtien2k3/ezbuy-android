@@ -2,10 +2,10 @@ package com.ezbuy.presentation.home.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.ProductItem
-import com.ezbuy.home.databinding.HomeFlexBoxProductItemBinding
 import com.ezbuy.presentation.common.extension.hide
 import com.ezbuy.presentation.common.extension.setImageUrl
 import com.ezbuy.presentation.common.extension.show
+import com.ezbuy.presentation.databinding.HomeFlexBoxProductItemBinding
 
 class HomeFlexBoxProductItemViewHolder(private val binding: HomeFlexBoxProductItemBinding) :
     RecyclerView.ViewHolder(binding.root) {

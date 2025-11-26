@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.ezbuy.domain.model.detail.DetailModel
-import com.ezbuy.home.R
+import com.ezbuy.presentation.R
 import com.ezbuy.presentation.common.extension.hide
 import com.ezbuy.presentation.common.extension.show
 import com.google.android.material.appbar.AppBarLayout

@@ -11,9 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.ezbuy.domain.model.detail.DetailModel
-import com.ezbuy.home.R
-import com.ezbuy.home.databinding.FragmentDetailBottomsheetBinding
+import com.ezbuy.presentation.R
 import com.ezbuy.presentation.common.extension.setImageUrl
+import com.ezbuy.presentation.databinding.FragmentDetailBottomsheetBinding
 import com.ezbuy.presentation.detail.DetailSharedViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint

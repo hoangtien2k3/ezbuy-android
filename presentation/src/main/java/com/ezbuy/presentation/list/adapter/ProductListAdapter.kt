@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.list.ListProductsModel
-import com.ezbuy.home.databinding.ListProductItemBinding
 import com.ezbuy.presentation.common.extension.setImageUrl
+import com.ezbuy.presentation.databinding.ListProductItemBinding
 
 class ProductListAdapter() :
     RecyclerView.Adapter<ProductListAdapter.ProductListViewHolder>() {

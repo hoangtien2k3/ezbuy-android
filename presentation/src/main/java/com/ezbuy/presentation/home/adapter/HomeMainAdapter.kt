@@ -7,11 +7,11 @@ import com.ezbuy.domain.model.home.HomeSectionAdapterItem.Companion.VIEW_TYPE_BA
 import com.ezbuy.domain.model.home.HomeSectionAdapterItem.Companion.VIEW_TYPE_FLEX_BOX_PRODUCTS
 import com.ezbuy.domain.model.home.HomeSectionAdapterItem.Companion.VIEW_TYPE_SLIDABLE_PRODUCTS
 import com.ezbuy.domain.model.home.HomeSectionAdapterItem.Companion.VIEW_TYPE_VERTICAL_PRODUCTS
-import com.ezbuy.home.databinding.RowHomeBannerBinding
-import com.ezbuy.home.databinding.RowHomeFlexBoxProductsBinding
-import com.ezbuy.home.databinding.RowHomeSlidableProductsBinding
-import com.ezbuy.home.databinding.RowHomeVerticalProductsBinding
 import com.ezbuy.presentation.common.extension.viewBinding
+import com.ezbuy.presentation.databinding.RowHomeBannerBinding
+import com.ezbuy.presentation.databinding.RowHomeFlexBoxProductsBinding
+import com.ezbuy.presentation.databinding.RowHomeSlidableProductsBinding
+import com.ezbuy.presentation.databinding.RowHomeVerticalProductsBinding
 import com.ezbuy.presentation.home.viewholder.EmptyViewHolder
 import com.ezbuy.presentation.home.viewholder.HomeBannerViewHolder
 import com.ezbuy.presentation.home.viewholder.HomeFlexBoxProductsViewHolder

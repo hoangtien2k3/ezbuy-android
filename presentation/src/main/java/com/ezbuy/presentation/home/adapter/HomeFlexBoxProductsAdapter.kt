@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.ProductItem
-import com.ezbuy.home.databinding.HomeFlexBoxProductItemBinding
+import com.ezbuy.presentation.databinding.HomeFlexBoxProductItemBinding
 import com.ezbuy.presentation.home.viewholder.HomeFlexBoxProductItemViewHolder
 
 class HomeFlexBoxProductsAdapter(

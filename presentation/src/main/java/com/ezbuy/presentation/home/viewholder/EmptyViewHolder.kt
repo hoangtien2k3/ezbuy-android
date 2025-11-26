@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ezbuy.home.R
+import com.ezbuy.presentation.R
 
 class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     companion object {

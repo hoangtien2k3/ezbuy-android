@@ -12,10 +12,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.ezbuy.domain.model.detail.DetailModel
-import com.ezbuy.home.databinding.FragmentDetailBinding
 import com.ezbuy.presentation.common.ToolbarTransitionAnimation
 import com.ezbuy.presentation.common.extension.setImageUrl
 import com.ezbuy.presentation.common.extension.shareLink
+import com.ezbuy.presentation.databinding.FragmentDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

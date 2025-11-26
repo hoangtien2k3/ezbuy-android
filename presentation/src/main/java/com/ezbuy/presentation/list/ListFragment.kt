@@ -13,11 +13,11 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ezbuy.home.R
-import com.ezbuy.home.databinding.FragmentListsBinding
+import com.ezbuy.presentation.R
 import com.ezbuy.presentation.common.ErrorPopupFragment
 import com.ezbuy.presentation.common.extension.hide
 import com.ezbuy.presentation.common.extension.show
+import com.ezbuy.presentation.databinding.FragmentListsBinding
 import com.ezbuy.presentation.home.HomeFragment
 import com.ezbuy.presentation.list.adapter.ProductListAdapter
 import com.ezbuy.presentation.list.paging.PaginationScrollListener

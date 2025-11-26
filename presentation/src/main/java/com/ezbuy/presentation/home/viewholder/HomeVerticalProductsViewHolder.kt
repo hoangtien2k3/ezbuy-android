@@ -3,7 +3,7 @@ package com.ezbuy.presentation.home.viewholder
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.ProductItem
-import com.ezbuy.home.databinding.RowHomeVerticalProductsBinding
+import com.ezbuy.presentation.databinding.RowHomeVerticalProductsBinding
 import com.ezbuy.presentation.home.adapter.HomeVerticalProductsAdapter
 
 class HomeVerticalProductsViewHolder(private val binding: RowHomeVerticalProductsBinding) :

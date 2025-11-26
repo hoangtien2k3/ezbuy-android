@@ -2,8 +2,8 @@ package com.ezbuy.presentation.home.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.ProductItem
-import com.ezbuy.home.databinding.HomeSlidingProductItemBinding
 import com.ezbuy.presentation.common.extension.setImageUrl
+import com.ezbuy.presentation.databinding.HomeSlidingProductItemBinding
 
 class HomeSlidableProductItemViewHolder(private val binding: HomeSlidingProductItemBinding) :
     RecyclerView.ViewHolder(binding.root) {

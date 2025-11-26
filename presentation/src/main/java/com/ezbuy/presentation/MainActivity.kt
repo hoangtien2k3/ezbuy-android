@@ -9,8 +9,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.ezbuy.home.R
-import com.ezbuy.home.databinding.ActivityMainBinding
+import com.ezbuy.presentation.databinding.ActivityMainBinding
 import com.ezbuy.presentation.home.HomeSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

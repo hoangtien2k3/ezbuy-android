@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.BannerItem
-import com.ezbuy.home.databinding.RowHomeBannerItemBinding
+import com.ezbuy.presentation.databinding.RowHomeBannerItemBinding
 import com.ezbuy.presentation.home.viewholder.HomeBannerItemViewHolder
 
 class HomeBannerAdapter(

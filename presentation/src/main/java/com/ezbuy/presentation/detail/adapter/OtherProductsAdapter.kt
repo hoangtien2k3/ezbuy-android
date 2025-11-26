@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.detail.OtherProducts
-import com.ezbuy.home.databinding.HomeSlidingProductItemBinding
 import com.ezbuy.presentation.common.extension.setImageUrl
+import com.ezbuy.presentation.databinding.HomeSlidingProductItemBinding
 
 class OtherProductsAdapter(
     private val list: ArrayList<OtherProducts>,

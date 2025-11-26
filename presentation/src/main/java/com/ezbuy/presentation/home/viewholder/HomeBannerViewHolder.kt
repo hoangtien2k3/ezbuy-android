@@ -3,7 +3,7 @@ package com.ezbuy.presentation.home.viewholder
 import android.os.CountDownTimer
 import androidx.recyclerview.widget.RecyclerView
 import com.ezbuy.domain.model.home.BannerItem
-import com.ezbuy.home.databinding.RowHomeBannerBinding
+import com.ezbuy.presentation.databinding.RowHomeBannerBinding
 import com.ezbuy.presentation.home.adapter.HomeBannerAdapter
 
 class HomeBannerViewHolder(

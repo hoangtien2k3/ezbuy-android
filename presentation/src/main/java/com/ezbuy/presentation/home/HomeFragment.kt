@@ -12,10 +12,10 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ezbuy.home.databinding.FragmentHomeBinding
 import com.ezbuy.presentation.common.ErrorPopupFragment
 import com.ezbuy.presentation.common.extension.hide
 import com.ezbuy.presentation.common.extension.show
+import com.ezbuy.presentation.databinding.FragmentHomeBinding
 import com.ezbuy.presentation.home.adapter.HomeMainAdapter
 import com.ezbuy.presentation.home.uievents.GetHomeEvents
 import dagger.hilt.android.AndroidEntryPoint

@@ -8,7 +8,7 @@ import com.ezbuy.common.extensions.onSuccess
 import com.ezbuy.domain.model.list.ListRequestModel
 import com.ezbuy.domain.model.list.ListRouteData
 import com.ezbuy.domain.usecase.GetListUseCase
-import com.ezbuy.home.R
+import com.ezbuy.presentation.R
 import com.ezbuy.presentation.list.uievents.GetListEvents
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay

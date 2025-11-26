@@ -9,7 +9,7 @@ plugins {
 apply from: '../auto_dimension.gradle'
 
 android {
-    namespace 'com.ezbuy.home'
+    namespace 'com.ezbuy.presentation'
     compileSdk = libs.versions.compileSdk.get().toInteger()
 
     defaultConfig {
@@ -93,6 +93,9 @@ dependencies {
     // Startup and Timber
     implementation libs.androidx.startup
     implementation libs.timber
+
+    // MotionToast
+    implementation(libs.motionToast)
 
     // Test
     testImplementation libs.junit.core

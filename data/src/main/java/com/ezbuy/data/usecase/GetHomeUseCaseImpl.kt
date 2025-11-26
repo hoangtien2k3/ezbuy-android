@@ -20,6 +20,9 @@ class GetHomeUseCaseImpl
         override suspend operator fun invoke(): Resource<HomeModel> {
             return withContext(dispatcher) {
                 when (val resource = getHomeRepository.getHome()) {
+                    is Resource.Loading -> {
+                        Resource.Loading
+                    }
                     is Resource.Success -> {
                         Resource.Success(homeMapper.mapToDomainModel(resource.data))
                     }
