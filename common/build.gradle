@@ -40,6 +40,10 @@ dependencies {
     implementation libs.android.core
     implementation libs.appcompat
 
+    // Navigation
+    implementation libs.bundles.androidx.navigation
+    implementation libs.timber
+
     testImplementation libs.junit.core
     androidTestImplementation libs.junit.test
     implementation libs.junit.core

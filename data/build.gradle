@@ -63,9 +63,13 @@ dependencies {
     implementation libs.rx.java.core
     implementation libs.android.core
     implementation libs.appcompat
+    implementation libs.bundles.michael.kotlin.result
+
+    androidTestImplementation libs.junit.test
+    implementation libs.bundles.moshi.core
+
     testImplementation(libs.mockk.android)
     testImplementation(libs.mockk.core)
     testImplementation libs.junit.core
     testImplementation(libs.coroutines.test)
-    androidTestImplementation libs.junit.test
 }

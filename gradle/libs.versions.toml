@@ -33,6 +33,25 @@ androidx-startup = "1.1.1"
 timber = "5.0.1"
 material = "1.12.0"
 motiontoast = "1.4"
+moshi = "1.15.1"
+michael-bull-kotlin-result = "1.1.18"
+androidx-navigation = "2.8.0"
+
+[bundles]
+moshi-core = [
+    "moshi",
+    "moshi-kotlin"
+]
+
+michael-kotlin-result = [
+    "michael-bull-kotlin-result",
+    "michael-bull-kotlin-result-coroutines"
+]
+
+androidx-navigation = [
+    "androidx-navigation-fragment-ktx",
+    "androidx-navigation-ui-ktx"
+]
 
 [libraries]
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
@@ -73,3 +92,14 @@ fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragm
 androidx-startup = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 motionToast = { module = "com.github.Spikeysanju:MotionToast", version.ref = "motiontoast" }
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+
+# Michael Bull Kotlin Result Library, Monad, Result, Functional Programming
+michael-bull-kotlin-result = { module = "com.michael-bull.kotlin-result:kotlin-result", version.ref = "michael-bull-kotlin-result" }
+michael-bull-kotlin-result-coroutines = { module = "com.michael-bull.kotlin-result:kotlin-result-coroutines", version.ref = "michael-bull-kotlin-result" }
+
+# AndroidX-Navigation
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "androidx-navigation" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "androidx-navigation" }
+

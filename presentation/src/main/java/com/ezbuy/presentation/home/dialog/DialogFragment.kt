@@ -19,8 +19,7 @@ import kotlinx.coroutines.launch
 class DialogFragment : BottomSheetDialogFragment(R.layout.fragment_dialog) {
     private val binding by viewBinding(FragmentDialogBinding::bind)
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
-        Dialog(requireContext(), R.style.AppEzbuyStyle)
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog = Dialog(requireContext(), R.style.AppEzbuyStyle)
 
     override fun onStart() {
         super.onStart()
@@ -40,7 +39,10 @@ class DialogFragment : BottomSheetDialogFragment(R.layout.fragment_dialog) {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
 
         val agrsDialog: DialogArguments? = arguments?.getParcelable("DialogKey")
@@ -58,13 +60,12 @@ class DialogFragment : BottomSheetDialogFragment(R.layout.fragment_dialog) {
     }
 
     companion object {
-        fun newInstance(
-            dialogAgrument: DialogArguments,
-        ): DialogFragment {
+        fun newInstance(dialogAgrument: DialogArguments): DialogFragment {
             return DialogFragment().apply {
-                this.arguments = Bundle().apply {
-                    putParcelable("DialogKey", dialogAgrument)
-                }
+                this.arguments =
+                    Bundle().apply {
+                        putParcelable("DialogKey", dialogAgrument)
+                    }
             }
         }
     }

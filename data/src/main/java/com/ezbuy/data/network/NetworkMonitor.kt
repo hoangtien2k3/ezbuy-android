@@ -3,5 +3,5 @@ package com.ezbuy.data.network
 import kotlinx.coroutines.flow.Flow
 
 interface NetworkMonitor {
-  val isOnline: Flow<Boolean>
+    val isOnline: Flow<Boolean>
 }

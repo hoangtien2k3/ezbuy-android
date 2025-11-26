@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompilationTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -50,14 +49,8 @@ allprojects {
             showCauses true
             showStackTraces true
             showStandardStreams true
-            events = [
-                    TestLogEvent.PASSED,
-                    TestLogEvent.FAILED,
-                    TestLogEvent.SKIPPED,
-                    TestLogEvent.STANDARD_OUT,
-                    TestLogEvent.STANDARD_ERROR
-            ] as Set
-            exceptionFormat = TestExceptionFormat.FULL
+            events = ['passed', 'failed', 'skipped', 'standard_out', 'standard_error']
+            exceptionFormat = 'full'
         }
     }
 
@@ -79,22 +72,17 @@ allprojects {
 }
 
 subprojects {
-
-    // Set JVM target
-    tasks.withType(KotlinCompile).configureEach {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_17)
-        }
-    }
-
     // Set common Kotlin compiler options
-    tasks.withType(KotlinCompilationTask).configureEach {
-        compilerOptions {
-            freeCompilerArgs.addAll([
-                    "-opt-in=kotlin.RequiresOptIn",
-                    "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
-                    "-opt-in=kotlinx.coroutines.FlowPreview",
-            ])
+    afterEvaluate {
+        tasks.withType(KotlinCompile).configureEach {
+            compilerOptions {
+                jvmTarget.set(JvmTarget.JVM_17)
+                freeCompilerArgs.addAll([
+                        "-opt-in=kotlin.RequiresOptIn",
+                        "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                        "-opt-in=kotlinx.coroutines.FlowPreview",
+                ])
+            }
         }
     }
 

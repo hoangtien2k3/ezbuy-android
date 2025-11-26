@@ -13,11 +13,11 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 internal interface CoreModule {
-  @Binds
-  @Singleton
-  fun appCoroutineDispatchers(impl: DefaultAppCoroutineDispatchers): AppCoroutineDispatchers
+    @Binds
+    @Singleton
+    fun appCoroutineDispatchers(impl: DefaultAppCoroutineDispatchers): AppCoroutineDispatchers
 
-  @Binds
-  @Singleton
-  fun appCoroutineScope(impl: DefaultAppCoroutineScope): AppCoroutineScope
+    @Binds
+    @Singleton
+    fun appCoroutineScope(impl: DefaultAppCoroutineScope): AppCoroutineScope
 }

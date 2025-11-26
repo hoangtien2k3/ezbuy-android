@@ -13,14 +13,21 @@ import android.graphics.drawable.Drawable
 import android.util.TypedValue
 import android.view.View
 import android.widget.EditText
+import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.ezbuy.presentation.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import www.sanju.motiontoast.MotionToast
 import www.sanju.motiontoast.MotionToastStyle
 import java.text.DecimalFormat
@@ -29,13 +36,6 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import android.widget.Toast
 
 fun EditText.changeFocusedInputTint(isFocused: Boolean) {
     if (isFocused) {
@@ -245,17 +245,15 @@ fun Context.openShareIntent(text: String) {
 }
 
 // Extension function for Activity to launch coroutine with lifecycle awareness
-fun LifecycleOwner.launchAndRepeatStarted(
-  block: suspend CoroutineScope.() -> Unit,
-) {
-  lifecycleScope.launch {
-    repeatOnLifecycle(Lifecycle.State.STARTED) {
-      block()
+fun LifecycleOwner.launchAndRepeatStarted(block: suspend CoroutineScope.() -> Unit) {
+    lifecycleScope.launch {
+        repeatOnLifecycle(Lifecycle.State.STARTED) {
+            block()
+        }
     }
-  }
 }
 
 // Extension function for Activity to show toast
 fun Activity.toast(message: String) {
-  Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }

@@ -33,6 +33,9 @@ android {
         jvmToolchain {
             languageVersion.set(JavaLanguageVersion.of(17))
         }
+        compilerOptions {
+            freeCompilerArgs.addAll(['-Xannotation-default-target=param-property'])
+        }
     }
 }
 
@@ -43,9 +46,14 @@ dependencies {
     kapt libs.hilt.compiler
     implementation libs.android.core
     implementation libs.appcompat
-    testImplementation libs.junit.core
+    // Moshi library
+    implementation(libs.moshi)
+    // Moshi Kotlin support
+    implementation(libs.moshi.kotlin)
+
     androidTestImplementation libs.junit.test
     androidTestImplementation libs.espresso.core
-    testImplementation libs.coroutines.test
 
+    testImplementation libs.junit.core
+    testImplementation libs.coroutines.test
 }

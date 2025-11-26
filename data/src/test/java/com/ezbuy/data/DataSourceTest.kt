@@ -2,7 +2,7 @@ package com.ezbuy.data
 
 import com.ezbuy.data.model.DetailResponse
 import com.ezbuy.data.model.HomeResponse
-import com.ezbuy.data.remote.Api
+import com.ezbuy.data.remote.EzbuyAPI
 import com.ezbuy.data.remote.datasource.DataSourceImpl
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -13,7 +13,7 @@ import org.junit.Test
 import retrofit2.Response
 
 class DataSourceTest {
-    private val api = mockk<Api>()
+    private val api = mockk<EzbuyAPI>()
 
     private lateinit var dataSource: DataSourceImpl
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import com.ezbuy.data.network.NetworkMonitor
 import com.ezbuy.presentation.base.BaseActivity
 import com.ezbuy.presentation.common.hideWithoutAnimation
@@ -17,7 +18,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-
     @Inject
     internal lateinit var networkMonitor: NetworkMonitor
     private val viewModel by viewModels<MainViewModel>()
@@ -46,22 +46,22 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.onBoardingFragment -> {
-                    binding.bottomNavView.hideWithoutAnimation(binding.navHostContainer)
-                }
-
                 R.id.splashScreenFragment,
-                R.id.dialogFragment, -> {
+                R.id.onBoardingFragment,
+                R.id.dialogFragment,
+                -> {
+                    // Hide BottomNavigationView for splash, onboarding, and dialog screens
                     binding.bottomNavView.hideWithoutAnimation(binding.navHostContainer)
                 }
 
                 else -> {
+                    // Show BottomNavigationView for all other screens (home, list, detail, etc.)
                     binding.bottomNavView.showWithAnimation(binding.navHostContainer)
                 }
             }
         }
 
-//    binding.bottomNavView.setupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {

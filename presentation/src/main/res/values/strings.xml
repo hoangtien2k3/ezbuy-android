@@ -20,5 +20,14 @@
     <string name="have_an_account">Tôi thực sự đã có tài khoản</string>
     <string name="experience_now">Trải nghiệm ngay</string>
     <string name="successful_sign_in">Tài khoản của bạn đã sẵn sàng sử dụng. Bạn sẽ được chuyển hướng đến Trang Chính trong vài giây.</string>
+    <string name="congratulations">Chúc Mừng!</string>
+    <string name="error">Lỗi</string>
+    <string name="wellcome_ezbuy">Chào mừng đến với Ezbuy</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="letsgo">Đi</string>
+    <string name="login">Đăng nhập</string>
+    <string name="signup_now">Chưa có tài khoản?</string>
+    <string name="signup_now_right">tạo ngay</string>
 
 </resources>
