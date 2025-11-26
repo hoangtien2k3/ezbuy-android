@@ -2,7 +2,10 @@ package com.ezbuy.data.di
 
 import android.os.Build
 import com.ezbuy.data.BuildConfig
+import com.ezbuy.data.network.ConnectivityManagerNetworkMonitor
+import com.ezbuy.data.network.NetworkMonitor
 import com.ezbuy.data.remote.Api
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -52,4 +55,14 @@ internal object NetworkModule {
             level = HttpLoggingInterceptor.Level.BODY
         }
     }
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+internal abstract class NetworkMonitorModule {
+    @Binds
+    @Singleton
+    abstract fun bindNetworkMonitor(
+        networkMonitor: ConnectivityManagerNetworkMonitor,
+    ): NetworkMonitor
 }

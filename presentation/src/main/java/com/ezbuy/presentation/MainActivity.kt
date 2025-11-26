@@ -1,54 +1,71 @@
 package com.ezbuy.presentation
 
-import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
+import com.ezbuy.data.network.NetworkMonitor
+import com.ezbuy.presentation.base.BaseActivity
+import com.ezbuy.presentation.common.hideWithoutAnimation
+import com.ezbuy.presentation.common.launchAndRepeatStarted
+import com.ezbuy.presentation.common.showWithAnimation
+import com.ezbuy.presentation.common.toast
 import com.ezbuy.presentation.databinding.ActivityMainBinding
-import com.ezbuy.presentation.home.HomeSharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@SuppressLint("Instantiatable")
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var navController: NavController
-    private val viewModel: HomeSharedViewModel by viewModels()
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-        viewModel.getHome()
-        setupActionBar(binding.toolbar)
+    @Inject
+    internal lateinit var networkMonitor: NetworkMonitor
+    private val viewModel by viewModels<MainViewModel>()
+    private lateinit var navController: NavController
+
+    override fun onInflateView(inflater: LayoutInflater): ActivityMainBinding = ActivityMainBinding.inflate(inflater)
+
+    override fun setupData(savedInstanceState: Bundle?) {
+        if (savedInstanceState === null) {
+            setupBottomNavController()
+        }
+        launchAndRepeatStarted { networkMonitor.isOnline.collect(::handleOnlineStatus) }
     }
 
-    fun setupActionBar(toolBar: Toolbar) {
-        setSupportActionBar(toolBar)
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.fragment_container_view) as NavHostFragment
+    private fun handleOnlineStatus(isOnline: Boolean) {
+        if (!isOnline) {
+            toast("Network is disconnected...")
+        } else {
+            toast("Network is connected...")
+        }
+    }
+
+    private fun setupBottomNavController() {
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
         navController = navHostFragment.navController
 
-        val appBarConfiguration =
-            AppBarConfiguration(
-                setOf(
-                    R.id.homeFragment,
-                    R.id.detailFragment,
-                    R.id.listFragment,
-                    R.id.detailBottomSheetFragment,
-                    R.id.listLazyColumn,
-                ),
-            )
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.onBoardingFragment -> {
+                    binding.bottomNavView.hideWithoutAnimation(binding.navHostContainer)
+                }
 
-        setupActionBarWithNavController(navController, appBarConfiguration)
+                R.id.splashScreenFragment,
+                R.id.dialogFragment, -> {
+                    binding.bottomNavView.hideWithoutAnimation(binding.navHostContainer)
+                }
+
+                else -> {
+                    binding.bottomNavView.showWithAnimation(binding.navHostContainer)
+                }
+            }
+        }
+
+//    binding.bottomNavView.setupWithNavController(navController)
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        return super.onSupportNavigateUp() || navController.navigateUp()
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        setupBottomNavController()
     }
 }

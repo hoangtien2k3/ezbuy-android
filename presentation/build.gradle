@@ -2,8 +2,10 @@ plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.plugin.compose'
+    id 'kotlin-parcelize'
     id 'kotlin-kapt'
-    id("dagger.hilt.android.plugin")
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 apply from: '../auto_dimension.gradle'
@@ -60,6 +62,7 @@ android {
 dependencies {
     implementation project(path: ':domain')
     implementation project(path: ':common')
+    implementation project(path: ':data')
 
     // AndroidX & Compose
     implementation libs.lifecycle.ktx
@@ -94,8 +97,9 @@ dependencies {
     implementation libs.androidx.startup
     implementation libs.timber
 
-    // MotionToast
-    implementation(libs.motionToast)
+    implementation(libs.motionToast) {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-android-extensions-runtime'
+    }
 
     // Test
     testImplementation libs.junit.core

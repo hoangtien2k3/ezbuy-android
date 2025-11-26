@@ -29,6 +29,13 @@ import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.random.Random
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import android.widget.Toast
 
 fun EditText.changeFocusedInputTint(isFocused: Boolean) {
     if (isFocused) {
@@ -235,4 +242,20 @@ fun Context.openShareIntent(text: String) {
         Intent.createChooser(intent, getString(R.string.share))
             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
     )
+}
+
+// Extension function for Activity to launch coroutine with lifecycle awareness
+fun LifecycleOwner.launchAndRepeatStarted(
+  block: suspend CoroutineScope.() -> Unit,
+) {
+  lifecycleScope.launch {
+    repeatOnLifecycle(Lifecycle.State.STARTED) {
+      block()
+    }
+  }
+}
+
+// Extension function for Activity to show toast
+fun Activity.toast(message: String) {
+  Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
