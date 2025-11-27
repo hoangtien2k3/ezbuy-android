@@ -20,7 +20,7 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             startBtn.setOnClickListener {
-                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToListFragment2()
+                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInWithPassword()
                 findNavController().navigate(action)
             }
 //      signupStart.setOnClickListener {
