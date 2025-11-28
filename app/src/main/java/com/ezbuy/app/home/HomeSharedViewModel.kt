@@ -56,14 +56,6 @@ class HomeSharedViewModel
                 HomeRouteData.ROUTE_TO_DETAIL.routeID -> {
                     navController.navigate(R.id.detailFragment)
                 }
-
-                HomeRouteData.ROUTE_TO_LIST.routeID -> {
-                    navController.navigate(R.id.listFragment)
-                }
-
-                HomeRouteData.ROUTE_TO_COMPOSE_MULTI_TYPE_LAZY_COLUMN.routeID -> {
-                    navController.navigate(R.id.listLazyColumn)
-                }
             }
         }
     }
