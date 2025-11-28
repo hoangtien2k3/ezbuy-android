@@ -1,0 +1,41 @@
+package com.ezbuy.app.home.adapter
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.ezbuy.app.home.viewholder.HomeSlidableProductItemViewHolder
+import com.ezbuy.domain.model.home.ProductItem
+import com.ezbuy.app.databinding.HomeSlidingProductItemBinding
+
+class HomeSlidableProductAdapter(
+    private val list: ArrayList<ProductItem>,
+) : RecyclerView.Adapter<HomeSlidableProductItemViewHolder>() {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int,
+    ): HomeSlidableProductItemViewHolder {
+        return HomeSlidableProductItemViewHolder(
+            HomeSlidingProductItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false,
+            ),
+        )
+    }
+
+    override fun getItemCount() = list.size
+
+    override fun onBindViewHolder(
+        holder: HomeSlidableProductItemViewHolder,
+        position: Int,
+    ) {
+        val data = list[position]
+        holder.bind(data)
+    }
+
+    fun updateList(newList: List<ProductItem>) {
+        list.clear()
+        list.addAll(newList)
+        notifyDataSetChanged()
+    }
+}

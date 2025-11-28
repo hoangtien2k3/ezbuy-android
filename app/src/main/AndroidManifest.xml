@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.ezbuy.presentation.MainActivity"
+            android:name=".MainActivity"
             tools:ignore="Instantiatable"
             android:exported="true">
             <intent-filter>

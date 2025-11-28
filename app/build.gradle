@@ -3,6 +3,11 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
+//    id 'com.android.library'
+    id 'org.jetbrains.kotlin.plugin.compose'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -53,7 +58,6 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':presentation')
     implementation project(path: ':data')
     implementation project(path: ':domain')
     implementation project(path: ':common')
@@ -69,4 +73,45 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.startup
     implementation libs.timber
+
+    // AndroidX & Compose
+    implementation libs.lifecycle.ktx
+    implementation libs.compose.activity
+    implementation libs.compose.ui.graphics
+    implementation libs.fragment.ktx
+    implementation libs.compose.hilt.navigation
+    implementation libs.compose.view.model
+    implementation libs.compose.lifecycle
+    implementation libs.view.pager
+    implementation libs.flex.box
+    implementation libs.shimmer
+    implementation libs.paging
+    implementation libs.lottie
+    implementation libs.glide
+    implementation libs.swipe.to.refresh
+    implementation libs.compose.glide
+
+    // Hilt & Navigation
+    implementation libs.navigation.fragment.ktx
+    implementation libs.navigation.ui.ktx
+
+    // Misc
+    implementation libs.appcompat
+    implementation libs.android.core
+
+    implementation(libs.motionToast) {
+        exclude group: 'org.jetbrains.kotlin', module: 'kotlin-android-extensions-runtime'
+    }
+
+    implementation libs.bundles.michael.kotlin.result
+
+    // Test
+    testImplementation libs.junit.core
+    androidTestImplementation libs.junit.test
+    androidTestImplementation libs.espresso.core
+    implementation libs.hilt.test
+    kaptAndroidTest libs.hilt.compiler
+    testImplementation(libs.mockk.core)
+    testImplementation(libs.mockk.android)
+    testImplementation(libs.coroutines.test)
 }
