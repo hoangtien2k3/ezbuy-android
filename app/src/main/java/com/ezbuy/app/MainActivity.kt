@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.ezbuy.app.base.BaseActivity
 import com.ezbuy.app.common.hideWithoutAnimation
 import com.ezbuy.app.common.launchAndRepeatStarted
@@ -18,10 +17,13 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+
+    private val viewModel by viewModels<MainViewModel>()
+
+    private lateinit var navController: NavController
+
     @Inject
     internal lateinit var networkMonitor: NetworkMonitor
-    private val viewModel by viewModels<MainViewModel>()
-    private lateinit var navController: NavController
 
     override fun onInflateView(inflater: LayoutInflater): ActivityMainBinding = ActivityMainBinding.inflate(inflater)
 
@@ -41,27 +43,28 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     }
 
     private fun setupBottomNavController() {
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment
+        val navHostFragment = binding.navHostContainer.getFragment<NavHostFragment>()
         navController = navHostFragment.navController
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
+                R.id.onBoardingFragment -> {
+                    binding.bottomNavView.hideWithoutAnimation(binding.navHostContainer)
+                }
+
                 R.id.splashScreenFragment,
-                R.id.onBoardingFragment,
                 R.id.dialogFragment,
-                -> {
-                    // Hide BottomNavigationView for splash, onboarding, and dialog screens
+                R.id.signInWithPassword, -> {
                     binding.bottomNavView.hideWithoutAnimation(binding.navHostContainer)
                 }
 
                 else -> {
-                    // Show BottomNavigationView for all other screens (home, list, detail, etc.)
                     binding.bottomNavView.showWithAnimation(binding.navHostContainer)
                 }
             }
         }
 
-        binding.bottomNavView.setupWithNavController(navController)
+//    binding.bottomNavView.setupWithNavController(navController)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
