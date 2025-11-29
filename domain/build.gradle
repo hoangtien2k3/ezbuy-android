@@ -44,8 +44,6 @@ dependencies {
 
     implementation libs.hilt.core
     kapt libs.hilt.compiler
-    implementation libs.android.core
-    implementation libs.appcompat
     // Moshi library
     implementation(libs.moshi)
     // Moshi Kotlin support

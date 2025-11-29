@@ -72,17 +72,7 @@ dependencies {
     implementation libs.material
     implementation libs.androidx.startup
     implementation libs.timber
-
-    // AndroidX & Compose
-    implementation libs.lifecycle.ktx
-    implementation libs.compose.activity
-    implementation libs.compose.ui.graphics
-    implementation libs.fragment.ktx
-    implementation libs.compose.hilt.navigation
-    implementation libs.compose.view.model
-    implementation libs.compose.lifecycle
     implementation libs.view.pager
-    implementation libs.flex.box
     implementation libs.shimmer
     implementation libs.paging
     implementation libs.lottie

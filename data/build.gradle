@@ -59,11 +59,9 @@ dependencies {
     kapt libs.hilt.compiler
     implementation libs.retrofit.core
     implementation libs.retrofit.gson.converter
-    implementation libs.rx.java.android
-    implementation libs.rx.java.core
     implementation libs.android.core
-    implementation libs.appcompat
     implementation libs.bundles.michael.kotlin.result
+    implementation libs.bundles.moshi.core
 
     androidTestImplementation libs.junit.test
     implementation libs.bundles.moshi.core
