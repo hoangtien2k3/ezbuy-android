@@ -1,4 +1,4 @@
-package com.ezbuy.app.home
+package com.ezbuy.app.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.ezbuy.app.common.ErrorPopupFragment
 import com.ezbuy.app.common.extension.hide
 import com.ezbuy.app.common.extension.show
-import com.ezbuy.app.home.uievents.GetHomeEvents
+import com.ezbuy.app.ui.uievents.GetHomeEvents
 import com.ezbuy.app.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

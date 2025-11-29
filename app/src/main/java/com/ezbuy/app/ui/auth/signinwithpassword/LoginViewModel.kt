@@ -1,4 +1,4 @@
-package com.ezbuy.app.home.auth.signinwithpassword
+package com.ezbuy.app.ui.auth.signinwithpassword
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

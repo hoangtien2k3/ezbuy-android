@@ -1,7 +1,7 @@
-package com.ezbuy.app.home
+package com.ezbuy.app.ui
 
 import androidx.lifecycle.ViewModel
-import com.ezbuy.app.home.uievents.GetHomeEvents
+import com.ezbuy.app.ui.uievents.GetHomeEvents
 import com.ezbuy.domain.model.home.HomeSectionAdapterItem
 import com.ezbuy.domain.usecase.GetHomeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel

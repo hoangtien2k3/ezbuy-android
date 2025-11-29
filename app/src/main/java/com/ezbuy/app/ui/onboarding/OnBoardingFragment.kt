@@ -1,4 +1,4 @@
-package com.ezbuy.app.home.onboarding
+package com.ezbuy.app.ui.onboarding
 
 import android.os.Bundle
 import android.view.View

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ezbuy.app.home.HomeFragment"
+        android:name="com.ezbuy.app.ui.HomeFragment"
         android:label="" >
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
-        android:name="com.ezbuy.app.home.onboarding.OnBoardingFragment"
+        android:name="com.ezbuy.app.ui.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding">
         <action
@@ -21,12 +21,12 @@
     </fragment>
     <dialog
         android:id="@+id/dialogFragment"
-        android:name="com.ezbuy.app.home.dialog.DialogFragment"
+        android:name="com.ezbuy.app.ui.dialog.DialogFragment"
         android:label="fragment_dialog"
         tools:layout="@layout/fragment_dialog">
         <argument
             android:name="dialogArgs"
-            app:argType="com.ezbuy.app.home.dialog.DialogArguments" />
+            app:argType="com.ezbuy.app.ui.dialog.DialogArguments" />
         <action
             android:id="@+id/action_dialogFragment_to_homeFragment"
             app:destination="@id/homeFragment"
@@ -39,7 +39,7 @@
     </dialog>
     <fragment
         android:id="@+id/signInWithPassword"
-        android:name="com.ezbuy.app.home.auth.signinwithpassword.LoginFragment"
+        android:name="com.ezbuy.app.ui.auth.signinwithpassword.LoginFragment"
         android:label="fragment_sign_in_with_password"
         tools:layout="@layout/fragment_sign_in" >
         <action
@@ -62,7 +62,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.ezbuy.app.home.splash.SplashScreenFragment"
+        android:name="com.ezbuy.app.ui.splash.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen">
         <action

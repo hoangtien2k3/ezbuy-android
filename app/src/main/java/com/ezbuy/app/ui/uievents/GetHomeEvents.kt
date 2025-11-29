@@ -1,4 +1,4 @@
-package com.ezbuy.app.home.uievents
+package com.ezbuy.app.ui.uievents
 
 import com.ezbuy.domain.model.home.HomeModel
 import java.io.IOException

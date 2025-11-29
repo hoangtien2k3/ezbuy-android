@@ -1,4 +1,4 @@
-package com.ezbuy.app.home.dialog
+package com.ezbuy.app.ui.dialog
 
 import android.app.Dialog
 import android.os.Bundle

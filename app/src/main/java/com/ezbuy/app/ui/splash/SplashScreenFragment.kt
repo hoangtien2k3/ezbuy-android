@@ -1,4 +1,4 @@
-package com.ezbuy.app.home.splash
+package com.ezbuy.app.ui.splash
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.ezbuy.app.R
-import com.ezbuy.app.home.splash.SplashScreenFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

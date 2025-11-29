@@ -1,4 +1,4 @@
-package com.ezbuy.app.home.auth.signinwithpassword
+package com.ezbuy.app.ui.auth.signinwithpassword
 
 import android.text.method.PasswordTransformationMethod
 import android.view.View
@@ -9,8 +9,8 @@ import com.ezbuy.app.common.LoadingScreen
 import com.ezbuy.app.common.changeFocusedInputTint
 import com.ezbuy.app.common.launchAndRepeatStarted
 import com.ezbuy.app.common.showToast
-import com.ezbuy.app.home.dialog.DialogArguments
-import com.ezbuy.app.home.dialog.DialogFragment
+import com.ezbuy.app.ui.dialog.DialogArguments
+import com.ezbuy.app.ui.dialog.DialogFragment
 import com.ezbuy.common.utils.Resource
 import com.ezbuy.domain.model.signinwithpassword.KeycloakToken
 import com.ezbuy.app.R
