@@ -1,39 +1,37 @@
 package com.ezbuy.data.di
 
-import com.ezbuy.data.remote.datasource.DataSource
-import com.ezbuy.data.repository.DetailRepository
-import com.ezbuy.data.repository.DetailRepositoryImpl
-import com.ezbuy.data.repository.HomeRepository
+import com.ezbuy.data.mapper.either.LocalErrorMapper
+import com.ezbuy.data.mapper.either.LocalErrorMapperImpl
+import com.ezbuy.data.mapper.either.RemoteErrorMapper
+import com.ezbuy.data.mapper.either.RemoteErrorMapperImpl
+import com.ezbuy.domain.repository.HomeRepository
 import com.ezbuy.data.repository.HomeRepositoryImpl
-import com.ezbuy.data.repository.ListRepository
-import com.ezbuy.data.repository.ListRepositoryImpl
+import com.ezbuy.data.repository.signinwithpassword.AuthRepository
+import com.ezbuy.data.repository.signinwithpassword.AuthRepositoryImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
+internal interface RepositoryModule {
+    @Binds
     @Singleton
-    @Provides
-    fun provideHomeRepository(dataSource: DataSource): HomeRepository =
-        HomeRepositoryImpl(
-            dataSource,
-        )
+    fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
 
+    // =========================================== AUTH REPOSITORY ===========================================//
+    @Binds
     @Singleton
-    @Provides
-    fun provideDetailRepository(dataSource: DataSource): DetailRepository =
-        DetailRepositoryImpl(
-            dataSource,
-        )
+    fun authRepository(authRepositoryImpl: AuthRepositoryImpl): AuthRepository
 
+    // ------------------- Binds Utils -------------------
+    @Binds
     @Singleton
-    @Provides
-    fun provideListRepository(dataSource: DataSource): ListRepository =
-        ListRepositoryImpl(
-            dataSource,
-        )
+    fun localErrorMapper(implLocal: LocalErrorMapperImpl): LocalErrorMapper
+
+    @Binds
+    @Singleton
+    fun remoteErrorMapper(implRemote: RemoteErrorMapperImpl): RemoteErrorMapper
 }

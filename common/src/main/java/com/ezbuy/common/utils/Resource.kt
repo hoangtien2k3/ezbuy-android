@@ -1,9 +1,9 @@
 package com.ezbuy.common.utils
 
-import java.io.IOException
+sealed class Resource<out T : Any> {
+    data object Loading : Resource<Nothing>()
 
-sealed class Resource<out R> {
-    data class Success<out T>(val data: T) : Resource<T>()
+    data class Success<out T : Any>(val data: T) : Resource<T>()
 
-    data class Failure(val error: IOException) : Resource<Nothing>()
+    data class Failure(val error: AppError.UnknownException) : Resource<Nothing>()
 }

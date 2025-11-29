@@ -1,6 +1,7 @@
 package com.ezbuy.data.extensions
 
 import com.ezbuy.common.model.ResponseModel
+import com.ezbuy.common.utils.AppError
 import com.ezbuy.common.utils.Resource
 import retrofit2.Response
 import java.io.IOException
@@ -12,8 +13,8 @@ suspend fun <T : ResponseModel> handleAPICall(apiCall: suspend () -> Response<T>
     } catch (e: Exception) {
         e.printStackTrace()
         return when (e) {
-            is UnknownHostException -> Resource.Failure(IOException())
-            else -> Resource.Failure(IOException())
+            is UnknownHostException -> Resource.Failure(AppError.UnknownException(IOException()))
+            else -> Resource.Failure(AppError.UnknownException(IOException()))
         }
     }
 }
@@ -24,7 +25,7 @@ private fun <T : ResponseModel> Response<T>.handleAPIResponse(): Resource<T> {
         return if (responseBody != null) {
             Resource.Success(responseBody)
         } else {
-            Resource.Failure(IOException("Response body is null"))
+            Resource.Failure(AppError.UnknownException(IOException("Response body is null")))
         }
     }
 
@@ -36,5 +37,5 @@ private fun <T : ResponseModel> Response<T>.handleAPIResponse(): Resource<T> {
             "Error reading error body: ${e.message}"
         }
 
-    return Resource.Failure(IOException("HTTP ${code()}: $errorMessage"))
+    return Resource.Failure(AppError.UnknownException(IOException("HTTP ${code()}: $errorMessage")))
 }
