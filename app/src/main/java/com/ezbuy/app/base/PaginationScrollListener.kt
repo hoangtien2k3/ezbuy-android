@@ -1,4 +1,4 @@
-package com.ezbuy.app.list.paging
+package com.ezbuy.app.base
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

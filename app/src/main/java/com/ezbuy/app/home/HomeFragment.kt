@@ -11,11 +11,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.ezbuy.app.common.ErrorPopupFragment
 import com.ezbuy.app.common.extension.hide
 import com.ezbuy.app.common.extension.show
-import com.ezbuy.app.home.adapter.HomeMainAdapter
 import com.ezbuy.app.home.uievents.GetHomeEvents
 import com.ezbuy.app.databinding.FragmentHomeBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,8 +27,6 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var navController: NavController
-
-    private var homeAdapter: HomeMainAdapter? = null
 
     private val fragmentPopup = ErrorPopupFragment()
 
@@ -86,12 +82,6 @@ class HomeFragment : Fragment() {
                         }
                     }
                 }
-
-                launch {
-                    viewModel.sectionList.collect {
-                        homeAdapter?.updateHomeList(it)
-                    }
-                }
             }
         }
     }
@@ -102,19 +92,11 @@ class HomeFragment : Fragment() {
     }
 
     private fun bindRecyclerView() {
-        homeAdapter = HomeMainAdapter()
-        binding.homeRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = homeAdapter
-        }
+
     }
 
     private fun routeActions() {
-        homeAdapter?.homeBannerClickListener { routeId ->
-            routeId?.let {
-                viewModel.handleBannerRouteId(it, navController)
-            }
-        }
+
     }
 
     override fun onDestroyView() {

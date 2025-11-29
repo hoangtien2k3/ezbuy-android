@@ -9,32 +9,12 @@
         android:id="@+id/homeFragment"
         android:name="com.ezbuy.app.home.HomeFragment"
         android:label="" >
-        <action
-            android:id="@+id/action_homeFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_listFragment"
-            app:destination="@id/listFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_listLazyColumn"
-            app:destination="@id/listLazyColumn" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.ezbuy.app.detail.DetailFragment"
-        android:label="" >
-        <action
-            android:id="@+id/action_detailFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardingFragment"
         android:name="com.ezbuy.app.home.onboarding.OnBoardingFragment"
         android:label="fragment_on_boarding"
         tools:layout="@layout/fragment_on_boarding">
-        <action
-            android:id="@+id/action_onBoardingFragment_to_listFragment2"
-            app:destination="@id/listFragment" />
         <action
             android:id="@+id/action_onBoardingFragment_to_signInWithPassword"
             app:destination="@id/signInWithPassword" />
@@ -104,30 +84,4 @@
             app:popUpTo="@id/navigation_graph"
             app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/listFragment"
-        android:name="com.ezbuy.app.list.ListFragment"
-        android:label="" >
-        <action
-            android:id="@+id/action_listFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-        <action
-            android:id="@+id/action_listFragment_to_detailBottomSheetFragment"
-            app:destination="@id/detailBottomSheetFragment" />
-    </fragment>
-    <activity
-        android:id="@+id/listLazyColumn"
-        android:name="com.ezbuy.app.compose.ListLazyColumn"
-        android:label="ListLazyColumn" />
-    <dialog
-        android:id="@+id/detailBottomSheetFragment"
-        android:name="com.ezbuy.app.detail.bottomsheet.DetailBottomSheetFragment"
-        android:label="" >
-        <action
-            android:id="@+id/action_detailBottomSheetFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </dialog>
 </navigation>

@@ -19,7 +19,7 @@
         android:layout_below="@+id/popupIconImageView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        tools:text="Bu bir pop-up mesajıdır."
+        tools:text="Error exception"
         android:textColor="@android:color/black" />
 
     <ImageView

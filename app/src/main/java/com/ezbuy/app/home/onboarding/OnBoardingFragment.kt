@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.ezbuy.app.common.viewBinding
 import com.ezbuy.app.R
+import com.ezbuy.app.common.viewBinding
 import com.ezbuy.app.databinding.FragmentOnBoardingBinding
-import com.ezbuy.app.home.onboarding.OnBoardingFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -21,7 +20,7 @@ class OnBoardingFragment : Fragment(R.layout.fragment_on_boarding) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             startBtn.setOnClickListener {
-                val action = OnBoardingFragmentDirections.Companion.actionOnBoardingFragmentToListFragment2()
+                val action = OnBoardingFragmentDirections.actionOnBoardingFragmentToSignInWithPassword()
                 findNavController().navigate(action)
             }
 //      signupStart.setOnClickListener {

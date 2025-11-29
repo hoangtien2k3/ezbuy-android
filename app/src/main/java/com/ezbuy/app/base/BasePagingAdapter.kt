@@ -1,4 +1,4 @@
-package com.ezbuy.app.common.base
+package com.ezbuy.app.base
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
