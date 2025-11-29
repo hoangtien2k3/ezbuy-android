@@ -4,8 +4,6 @@ import com.ezbuy.common.utils.Resource
 import com.ezbuy.data.model.ListProducts
 import com.ezbuy.data.model.ListResponse
 import com.ezbuy.data.remote.datasource.DataSource
-import com.ezbuy.data.repository.ListRepository
-import com.ezbuy.data.repository.ListRepositoryImpl
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.every

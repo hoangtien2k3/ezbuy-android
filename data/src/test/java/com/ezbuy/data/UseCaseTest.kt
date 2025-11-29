@@ -1,13 +1,9 @@
 package com.ezbuy.data
 
 import com.ezbuy.common.utils.Resource
-import com.ezbuy.data.mapper.ListDomainModelMapper
 import com.ezbuy.data.model.ListResponse
-import com.ezbuy.data.repository.ListRepository
-import com.ezbuy.data.usecase.GetListUseCaseImpl
 import com.ezbuy.domain.model.list.ListModel
 import com.ezbuy.domain.model.list.ListRequestModel
-import com.ezbuy.domain.usecase.GetListUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers

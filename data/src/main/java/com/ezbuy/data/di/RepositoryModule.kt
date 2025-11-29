@@ -4,13 +4,8 @@ import com.ezbuy.data.mapper.either.LocalErrorMapper
 import com.ezbuy.data.mapper.either.LocalErrorMapperImpl
 import com.ezbuy.data.mapper.either.RemoteErrorMapper
 import com.ezbuy.data.mapper.either.RemoteErrorMapperImpl
-import com.ezbuy.data.remote.datasource.DataSource
-import com.ezbuy.data.repository.DetailRepository
-import com.ezbuy.data.repository.DetailRepositoryImpl
 import com.ezbuy.data.repository.HomeRepository
 import com.ezbuy.data.repository.HomeRepositoryImpl
-import com.ezbuy.data.repository.ListRepository
-import com.ezbuy.data.repository.ListRepositoryImpl
 import com.ezbuy.data.repository.signinwithpassword.AuthRepository
 import com.ezbuy.data.repository.signinwithpassword.AuthRepositoryImpl
 import dagger.Binds
@@ -25,14 +20,6 @@ internal interface RepositoryModule {
     @Binds
     @Singleton
     fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
-
-    @Binds
-    @Singleton
-    fun provideDetailRepository(detailRepositoryImpl: DetailRepositoryImpl): DetailRepository
-
-    @Binds
-    @Singleton
-    fun provideListRepository(listRepositoryImpl: ListRepositoryImpl): ListRepository
 
     // =========================================== AUTH REPOSITORY ===========================================//
     @Binds
