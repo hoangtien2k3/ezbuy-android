@@ -3,7 +3,6 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
-//    id 'com.android.library'
     id 'org.jetbrains.kotlin.plugin.compose'
     id 'kotlin-parcelize'
     id 'dagger.hilt.android.plugin'

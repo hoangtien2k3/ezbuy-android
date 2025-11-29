@@ -4,7 +4,7 @@ import com.ezbuy.data.mapper.either.LocalErrorMapper
 import com.ezbuy.data.mapper.either.LocalErrorMapperImpl
 import com.ezbuy.data.mapper.either.RemoteErrorMapper
 import com.ezbuy.data.mapper.either.RemoteErrorMapperImpl
-import com.ezbuy.data.repository.HomeRepository
+import com.ezbuy.domain.repository.HomeRepository
 import com.ezbuy.data.repository.HomeRepositoryImpl
 import com.ezbuy.data.repository.signinwithpassword.AuthRepository
 import com.ezbuy.data.repository.signinwithpassword.AuthRepositoryImpl
